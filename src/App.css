@@ -2,6 +2,14 @@ body{
     background-color: #ffc61e;
 }
 
+.showstuffs{
+    display: block;
+}
+
+.hidestuffs{
+    display: none;
+}
+
 .loginRegisterBox {
     display: flex;
 
@@ -36,8 +44,8 @@ body{
 }
 
 .logoImg {
-    max-width: 50%;
+    margin: auto;
+
+    max-width: 30%;
     display: flex;
-    margin-left: auto;
-    margin-right: auto;
 }
