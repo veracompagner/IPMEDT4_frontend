@@ -8,8 +8,8 @@ class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-        isLogin: true,
-        isRegister: false
+            isLogin: true,
+            isRegister: false
         };
     }
 
