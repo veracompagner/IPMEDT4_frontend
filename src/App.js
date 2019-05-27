@@ -1,7 +1,7 @@
 import React from "react";
 import Login from "./Login";
 import Hoi from "./Hoi";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 import "./App.css";
 
 class App extends React.Component {
@@ -20,16 +20,21 @@ class App extends React.Component {
     }
 
     /**
-     * @func setRedirect
-     * Changes redirect to true or false depending if the user is logged or not
+     * @func setRedirect*
+     * Changes redirect to true or false
      */
-    setRedirect = () => {
-        if(this.state.redirect){
-            redirect: false
-        }else{
+    setRedirectTrue = () => {
+        this.setState({
             redirect: true
-        }
+        })
     };
+
+    setRedirectFalse = () => {
+        this.setState({
+            redirect: false
+        })
+    };
+
 
     /**
      * @func renderRedirect
