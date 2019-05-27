@@ -1,0 +1,21 @@
+.loginRegisterBox {
+  display: flex;
+}
+
+.loginRegister {
+  flex: 1;
+  text-align: center;
+  padding-top: 5%;
+  padding-bottom: 5%;
+  cursor: pointer;
+}
+
+.loginRegisterActive {
+  flex: 1;
+  text-align: center;
+  padding-top: 5%;
+  padding-bottom: 5%;
+  cursor: pointer;
+  font-weight: bold;
+  text-decoration: underline;
+}
