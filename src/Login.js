@@ -14,27 +14,20 @@ class Login extends React.Component {
         return (
             <div>
 
-                {/* title */}
-                <div className="title">
-                    Login
-                </div>
-
                 {/* input username */}
                 <div className="input">
-                    <label>Username</label>
                     <input
                         type="text"
                         name="username"
-                        placeholder="Username"/>
+                        placeholder="Gebruikersnaam"/>
                 </div>
 
                 {/* input password */}
                 <div className="input">
-                    <label>Password</label>
                     <input
                         type="password"
                         name="password"
-                        placeholder="Password"/>
+                        placeholder="Wachtwoord"/>
                 </div>
 
                 {/* submit button */}

@@ -26,16 +26,18 @@ class App extends React.Component {
         return (
             <div>
 
+                <img className="logoImg" src="./img/appLogo.png" alt="appLogo"></img>
+
                 <div className="loginRegisterBox">
-                    <div
+                    <button
                         className={"loginRegister " + (this.state.isLogin ? "loginRegisterActive": "")}
                         onClick={this.showLogin.bind(this)}>Login
-                    </div>
+                    </button>
 
-                    <div
+                    <button
                         className={"loginRegister " + (this.state.isRegister ? "loginRegisterActive": "")}
-                        onClick={this.showRegister.bind(this)}>Register
-                    </div>
+                        onClick={this.showRegister.bind(this)}>Account Maken
+                    </button>
                 </div>
 
 

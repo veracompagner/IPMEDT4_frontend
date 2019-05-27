@@ -14,23 +14,16 @@ class Register extends React.Component {
         return (
             <div>
 
-                {/* title */}
-                <div className="title">
-                    Register
-                </div>
-
                 {/* input username */}
                 <div className="input">
-                    <label>Username</label>
                     <input
                         type="text"
                         name="username"
-                        placeholder="Username"/>
+                        placeholder="Gebruikersnaam"/>
                 </div>
 
                 {/* input mail */}
                 <div className="input">
-                    <label>Email</label>
                     <input
                         type="text"
                         name="email"
@@ -40,26 +33,24 @@ class Register extends React.Component {
 
                 {/* input password */}
                 <div className="input">
-                    <label>Password</label>
                     <input
                         type="password"
                         name="password"
-                        placeholder="Password"/>
+                        placeholder="Wachtwoord"/>
                 </div>
 
                 <div className="input">
-                    <label>Confirm Password</label>
                     <input
                         type="password"
                         name="confirmPassword"
-                        placeholder="Confirm Password"/>
+                        placeholder="Bevestig Wactwoord"/>
                 </div>
 
                 {/* submit button */}
                 <button
                     type="button"
                     className="loginButton"
-                    onClick={this.submitRegister.bind(this)}>Register</button>
+                    onClick={this.submitRegister.bind(this)}>Registreer</button>
 
             </div>
         );
