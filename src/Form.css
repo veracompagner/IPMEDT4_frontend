@@ -1,8 +1,8 @@
 #root {
-  width: 30%;
-  margin-left: auto;
-  margin-right: auto;
-  font-family: arial;
+    width: 30%;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: arial;
 }
 
 .title {
@@ -19,8 +19,4 @@
     flex-direction: column;
     margin-top: 5px;
     margin-bottom: 5px;
-}
-
-.loginButton{
-
 }
