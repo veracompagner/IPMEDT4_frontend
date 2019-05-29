@@ -1,54 +1,53 @@
 import React from "react";
 import {Link} from "react-router-dom";
-import "./Form.css";
 
-class Login extends React.Component {
+import "./Login.scss";
+import logo from "./img/appLogo.png";
+
+const Login = ({loginUser}) => {
+
+    let email, password;
     /**
-     * @func submitLogin
-     * @param e the event
-     * Submits the form
+     * @func handleLogin
+     * @param event
+     * Handles form submissions
      **/
-    submitLogin(e) {}
+    const handleLogin = event => {
+        event.preventDefault();
+        loginUser(email.value, password.value);
+    };
 
-    render() {
-        return (
-            <div>
-                <img className="logoImg" src="./img/appLogo.png" alt="appLogo"></img>
-
+    return (
+        <div id="login">
+            <img className="logoImg" src={logo} alt="appLogo"></img>
+            <form onSubmit={handleLogin} action="" method="post">
                 {/* input username */}
-                <div className="LoginInputStuffs ">
-                    <div className="input">
-                        <input
-                            className="inputbox"
-                            type="text"
-                            name="username"
-                            placeholder="Gebruikersnaam"/>
-                    </div>
-
-                    {/* input password */}
-                    <div className="input">
-                        <input
-                            className="inputbox"
-                            type="password"
-                            name="password"
-                            placeholder="Wachtwoord"/>
-                    </div>
-
-                    <div className="splitbox">
-                        {/*Register link*/}
-                        <Link className="loginRegister" to="/register">Registreren</Link>
-
-                        {/* submit button */}
-                        <button
-                            type="button"
-                            className="loginButton"
-                            onClick={this.submitLogin.bind(this)}>Login
-                        </button>
-                    </div>
+                <input
+                    ref={input => (email = input)}
+                    name="email"
+                    type="text"
+                    placeholder="E-mailadres"
+                />
+                {/* input password */}
+                <input
+                    ref={input => (password = input)}
+                    name="password"
+                    type="password"
+                    placeholder="Wachtwoord"
+                />
+                <div className="splitbox">
+                    {/*Register link*/}
+                    <Link to="/register">
+                        Registreren
+                    </Link>
+                    {/* submit button */}
+                    <button type="submit">
+                        Login
+                    </button>
                 </div>
-            </div>
-        );
-    }
+            </form>
+        </div>
+    );
 
 }
 

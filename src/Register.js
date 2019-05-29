@@ -1,77 +1,72 @@
 import React from "react";
-import "./Form.css";
 import {Link} from "react-router-dom";
 
-class Login extends React.Component {
+import "./Login.scss";
+import logo from "./img/appLogo.png";
+
+const Register = ({registerUser}) => {
+
+    let email, password, name, password_confirmation;
 
     /**
-     * @func submitLogin
-     * @param e the event
-     * Submits the form
+     * @func handleRegister
+     * @param event
+     * Handles form submissions
      **/
-    submitLogin(e) {}
+    const handleRegister = event => {
+        event.preventDefault();
+        registerUser(name.value, email.value, password.value, password_confirmation.value);
+    };
 
-    render() {
-        return (
-            <div>
-                <img className="logoImg" src="./img/appLogo.png" alt="appLogo"></img>
+    return (
+        <div id="register">
+            <img className="logoImg" src={logo} alt="appLogo"></img>
+            <form onSubmit={handleRegister} action="" method="post">
+                {/* input username */}
+                <input
+                    ref={input => (name = input)}
+                    name="username"
+                    type="text"
+                    placeholder="Gebruikersnaam"
+                />
 
-                <div className="RegisterInputStuffs">
-                    {/* input username */}
-                    <div className="input">
-                        <input
-                            className="inputbox"
-                            type="text"
-                            name="username"
-                            placeholder="Gebruikersnaam"/>
-                    </div>
-
-                    {/* input mail */}
-                    <div className="input">
-                        <input
-                            className="inputbox"
-                            type="text"
-                            name="email"
-                            placeholder="Email"/>
-                    </div>
+                {/* input mail */}
+                <input
+                    ref={input => (email = input)}
+                    name="email"
+                    type="text"
+                    placeholder="E-mailadres"
+                />
 
 
-                    {/* input password */}
-                    <div className="input">
-                        <input
-                            className="inputbox"
-                            type="password"
-                            name="password"
-                            placeholder="Wachtwoord"/>
-                    </div>
+                {/* input password */}
+                <input
+                    ref={input => (password = input)}
+                    name="password"
+                    type="password"
+                    placeholder="Wachtwoord"
+                />
 
-                    <div className="input">
-                        <input
-                            className="inputbox"
-                            type="password"
-                            name="confirmPassword"
-                            placeholder="Bevestig Wactwoord"/>
-                    </div>
+                <input
+                    ref={input => (password_confirmation = input)}
+                    name="password_confirmation"
+                    type="password"
+                    placeholder="Bevestig Wachtwoord"
+                />
 
-                    <div className="splitbox">
-                        {/*Link to inloggen*/}
-                        <Link className="loginRegister" to="/">Inloggen</Link>
-                        {/* submit button */}
-                        <button
-                            type="button"
-                            className="loginButton"
-                            onClick={this.submitLogin.bind(this)}>Registreer</button>
-                    </div>
+                <div className="splitbox">
+                    {/*Inlog link*/}
+                    <Link to="/">
+                        Inloggen
+                    </Link>
+                    {/* submit button */}
+                    <button type="submit">
+                        Registreer
+                    </button>
                 </div>
-
-
-
-
-
-            </div>
-        );
-    }
-
+            </form>
+        </div>
+    );
 }
 
-export default Login;
+export default Register;
