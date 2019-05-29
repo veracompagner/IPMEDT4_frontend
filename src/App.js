@@ -1,9 +1,11 @@
 import React from "react";
+import { Switch, Route, Redirect, withRouter } from "react-router-dom";
+
 import Login from "./Login";
 import Register from "./Register";
 import Hoi from "./Hoi";
-import { Switch, Route, Redirect, withRouter } from "react-router-dom";
-import "./App.css";
+
+import "./App.scss";
 
 class App extends React.Component {
 
