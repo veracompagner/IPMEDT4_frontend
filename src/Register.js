@@ -16,15 +16,11 @@ class Login extends React.Component {
             <div>
                 <img className="logoImg" src="./img/appLogo.png" alt="appLogo"></img>
 
-                <div className="loginRegisterBox">
-                    <Link className="loginRegister" to="/">Inloggen</Link>
-                    <Link className="loginRegister loginRegisterActive" to="/register">Account Maken</Link>
-                </div>
-
                 <div className="RegisterInputStuffs">
                     {/* input username */}
                     <div className="input">
                         <input
+                            className="inputbox"
                             type="text"
                             name="username"
                             placeholder="Gebruikersnaam"/>
@@ -33,6 +29,7 @@ class Login extends React.Component {
                     {/* input mail */}
                     <div className="input">
                         <input
+                            className="inputbox"
                             type="text"
                             name="email"
                             placeholder="Email"/>
@@ -42,6 +39,7 @@ class Login extends React.Component {
                     {/* input password */}
                     <div className="input">
                         <input
+                            className="inputbox"
                             type="password"
                             name="password"
                             placeholder="Wachtwoord"/>
@@ -49,16 +47,21 @@ class Login extends React.Component {
 
                     <div className="input">
                         <input
+                            className="inputbox"
                             type="password"
                             name="confirmPassword"
                             placeholder="Bevestig Wactwoord"/>
                     </div>
 
-                    {/* submit button */}
-                    <button
-                        type="button"
-                        className="loginButton"
-                        onClick={this.submitLogin.bind(this)}>Registreer</button>
+                    <div className="splitbox">
+                        {/*Link to inloggen*/}
+                        <Link className="loginRegister" to="/">Inloggen</Link>
+                        {/* submit button */}
+                        <button
+                            type="button"
+                            className="loginButton"
+                            onClick={this.submitLogin.bind(this)}>Registreer</button>
+                    </div>
                 </div>
 
 

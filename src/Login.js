@@ -15,15 +15,11 @@ class Login extends React.Component {
             <div>
                 <img className="logoImg" src="./img/appLogo.png" alt="appLogo"></img>
 
-                <div className="loginRegisterBox">
-                    <Link className="loginRegister loginRegisterActive" to="/">Inloggen</Link>
-                    <Link className="loginRegister" to="/register">Account Maken</Link>
-                </div>
-
                 {/* input username */}
                 <div className="LoginInputStuffs ">
                     <div className="input">
                         <input
+                            className="inputbox"
                             type="text"
                             name="username"
                             placeholder="Gebruikersnaam"/>
@@ -32,17 +28,23 @@ class Login extends React.Component {
                     {/* input password */}
                     <div className="input">
                         <input
+                            className="inputbox"
                             type="password"
                             name="password"
                             placeholder="Wachtwoord"/>
                     </div>
 
-                    {/* submit button */}
-                    <button
-                        type="button"
-                        className="loginButton"
-                        onClick={this.submitLogin.bind(this)}>Login
-                    </button>
+                    <div className="splitbox">
+                        {/*Register link*/}
+                        <Link className="loginRegister" to="/register">Registreren</Link>
+
+                        {/* submit button */}
+                        <button
+                            type="button"
+                            className="loginButton"
+                            onClick={this.submitLogin.bind(this)}>Login
+                        </button>
+                    </div>
                 </div>
             </div>
         );
