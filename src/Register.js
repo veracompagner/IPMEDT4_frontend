@@ -1,7 +1,5 @@
 import React from "react";
-import {BrowserRouter as Router, Route, Redirect, Link} from "react-router-dom";
 import "./Form.css";
-import Register from "./Register";
 
 class Login extends React.Component {
 
@@ -34,7 +32,6 @@ class Login extends React.Component {
     }
     showRegister() {
         this.setState({isRegister: true, isLogin: false});
-        return <Register/>;
     }
 
 
@@ -52,25 +49,32 @@ class Login extends React.Component {
 
                 <div className="loginRegisterBox">
                     <button
-                        className="loginRegister loginRegisterActive"
+                        className="loginRegister"
                         onClick={this.showLogin.bind(this)}>Login
                     </button>
 
-                    {/*<button*/}
-                        {/*className="loginRegister "*/}
-                        {/*onClick={<Route path="/Register" exact component={this.showRegister} />}>Account Maken*/}
-                    {/*</button>*/}
-                    <Link className="loginRegister" to="/register" />
+                    <button
+                        className="loginRegister loginRegisterActive"
+                        onClick={this.showRegister.bind(this)}>Account Maken
+                    </button>
                 </div>
-
-                {/* input username */}
-                <div className="LoginInputStuffs ">
+                <div className={"RegisterInputStuffs " + (this.state.isRegister ? "showstuffs": "hidestuffs")}>
+                    {/* input username */}
                     <div className="input">
                         <input
                             type="text"
                             name="username"
                             placeholder="Gebruikersnaam"/>
                     </div>
+
+                    {/* input mail */}
+                    <div className="input">
+                        <input
+                            type="text"
+                            name="email"
+                            placeholder="Email"/>
+                    </div>
+
 
                     {/* input password */}
                     <div className="input">
@@ -80,13 +84,24 @@ class Login extends React.Component {
                             placeholder="Wachtwoord"/>
                     </div>
 
+                    <div className="input">
+                        <input
+                            type="password"
+                            name="confirmPassword"
+                            placeholder="Bevestig Wactwoord"/>
+                    </div>
+
                     {/* submit button */}
                     <button
                         type="button"
                         className="loginButton"
-                        onClick={this.submitLogin.bind(this)}>Login
-                    </button>
+                        onClick={this.submitLogin.bind(this)}>Registreer</button>
                 </div>
+
+
+
+
+
             </div>
         );
     }

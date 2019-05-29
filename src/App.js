@@ -1,5 +1,6 @@
 import React from "react";
 import Login from "./Login";
+import Register from "./Register";
 import Hoi from "./Hoi";
 import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 import "./App.css";
@@ -55,8 +56,12 @@ class App extends React.Component {
      * @returns {Logincomponent}
      * This function shows the login screen
      */
-    Index() {
+    Login() {
         return <Login/>;
+    }
+
+    Register(){
+        return <Register/>;
     }
 
     /**
@@ -75,8 +80,8 @@ class App extends React.Component {
         return(
             <div>
                 <Router>
-                    <Route exact path='/' component={this.Index} />
-                    <Route path="/hoi/" component={this.Hoi} />
+                    <Route exact path='/' component={this.Login} />
+                    <Route path="/register" component={this.Register} />
                 </Router>
             </div>
         )
