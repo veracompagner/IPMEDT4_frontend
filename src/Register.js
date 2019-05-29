@@ -1,39 +1,8 @@
 import React from "react";
 import "./Form.css";
+import {Link} from "react-router-dom";
 
 class Login extends React.Component {
-
-    /**
-     * @func constructor
-     * @param props
-     * This function initializes the states.
-     * Default shows the login boxes.
-     * state has:
-     * isLogin = show login
-     * isRegister = show register
-     **/
-    constructor(props) {
-        super(props);
-        this.state = {
-            isLogin: true,
-            isRegister: false
-        };
-    }
-    /**
-     * @func showLogin
-     * @func showRegister
-     *
-     * Two functions to change the states of isLogin and isRegister
-     * These are used to hide/show the right divs
-     **/
-
-    showLogin() {
-        this.setState({isLogin: true, isRegister: false});
-    }
-    showRegister() {
-        this.setState({isRegister: true, isLogin: false});
-    }
-
 
     /**
      * @func submitLogin
@@ -48,17 +17,11 @@ class Login extends React.Component {
                 <img className="logoImg" src="./img/appLogo.png" alt="appLogo"></img>
 
                 <div className="loginRegisterBox">
-                    <button
-                        className="loginRegister"
-                        onClick={this.showLogin.bind(this)}>Login
-                    </button>
-
-                    <button
-                        className="loginRegister loginRegisterActive"
-                        onClick={this.showRegister.bind(this)}>Account Maken
-                    </button>
+                    <Link className="loginRegister" to="/">Inloggen</Link>
+                    <Link className="loginRegister loginRegisterActive" to="/register">Account Maken</Link>
                 </div>
-                <div className={"RegisterInputStuffs " + (this.state.isRegister ? "showstuffs": "hidestuffs")}>
+
+                <div className="RegisterInputStuffs">
                     {/* input username */}
                     <div className="input">
                         <input
