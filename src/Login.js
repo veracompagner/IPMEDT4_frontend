@@ -6,22 +6,6 @@ import Register from "./Register";
 class Login extends React.Component {
 
     /**
-     * @func constructor
-     * @param props
-     * This function initializes the states.
-     * Default shows the login boxes.
-     * state has:
-     * isLogin = show login
-     * isRegister = show register
-     **/
-    constructor(props) {
-        super(props);
-        this.state = {
-            isLogin: true,
-            isRegister: false
-        };
-    }
-    /**
      * @func showLogin
      * @func showRegister
      *
@@ -60,7 +44,7 @@ class Login extends React.Component {
                         {/*className="loginRegister "*/}
                         {/*onClick={<Route path="/Register" exact component={this.showRegister} />}>Account Maken*/}
                     {/*</button>*/}
-                    <Link className="loginRegister" to="/register" />
+                    <Link className="loginRegister" to="/register">Account Maken</Link>
                 </div>
 
                 {/* input username */}
