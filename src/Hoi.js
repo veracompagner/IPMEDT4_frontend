@@ -8,7 +8,7 @@ const Hoi = props => {
     return (
         <div>
             <p>Hallo!!</p>
-            <button onClick={this.props.logoutUser}>
+            <button onClick={props.logoutUser}>
                 Logout
             </button>
         </div>
