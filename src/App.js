@@ -23,8 +23,8 @@ class App extends React.Component {
             isLoggedIn: false,
             user: {}
         };
-        // this.apiurl = "http://" + window.location.hostname + ":8000/api";
-        this.apiurl = "http://IPMEDT4_api.test/api";
+        this.apiurl = "http://" + window.location.hostname + ":8000/api";
+        // this.apiurl = "http://IPMEDT4_api.test/api"; Meuk voor matthijs
     }
 
     loginUser = (email, password) => {
@@ -64,7 +64,7 @@ class App extends React.Component {
     registerUser = (name, email, password, password_confirmation) => {
 
         var formData = new FormData();
-        
+
         formData.append("name", name);
         formData.append("email", email);
         formData.append("password", password);
