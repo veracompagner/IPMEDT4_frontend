@@ -3,14 +3,15 @@
 
     .logoImg {
         margin: 0 auto;
-        max-width: 30%;
+        width: 60%;
+        max-width: 300px;
         display: block;
     }
 
     form {
         display: block;
         margin: 0 auto;
-        max-width: 800px;
+        max-width: 600px;
     }
 
     input {
@@ -37,7 +38,7 @@
     button {
         font-size: 1.5em;
         padding: 15px;
-        width: 20%;
+        min-width: 30%;
         color: white;
         background-color: #00337f;
         border-radius: 0.5rem;
