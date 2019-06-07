@@ -1,6 +1,8 @@
 import React from "react";
 import "./Acties.css";
 
+import example from "./img/exampleComp.jpg";
+
 class Acties extends React.Component {
 
     constructor(props) {
@@ -17,7 +19,7 @@ class Acties extends React.Component {
                 {/* Copany image pathname + exchangeable product name + company name + needed amount of points */}
                 <div className="pointsExchangeCard">
                     <div class="companyLogoWrapper">
-                        <img className="companyLogo" src="./img/exampleComp.jpg" alt="(Company name) Logo"></img>
+                        <img className="companyLogo" src={example} alt="(Company name) Logo"></img>
                     </div>
 
                     <div className="exchangeCardTextInfoContainer">
