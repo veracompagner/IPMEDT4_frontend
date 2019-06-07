@@ -107,7 +107,7 @@ class App extends React.Component {
         this.setState(appState);
     };
 
-    componentDidMount = () => {
+    componentWillMount = () => {
         let state = localStorage["appState"];
         if (state) {
             let AppState = JSON.parse(state);
