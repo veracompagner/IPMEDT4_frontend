@@ -6,6 +6,7 @@ import axios from "axios";
 import Login from "./Login";
 import Register from "./Register";
 import Hoi from "./Hoi";
+import Acties from "./Acties";
 
 import "./App.scss";
 
@@ -129,6 +130,7 @@ class App extends React.Component {
                 <Route exact path='/' render={props => <Hoi {...props} logoutUser={this.logoutUser} user={this.state.user} apiurl={this.apiurl}/>} />
                 <Route path="/login" render={props => <Login {...props} loginUser={this.loginUser} />} />
                 <Route path="/register" render={props => <Register {...props} registerUser={this.registerUser} />} />
+                <Route path="/acties" component={Acties} />
             </Switch>
         )
     }
