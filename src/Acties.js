@@ -12,7 +12,7 @@ const Acties = () => {
 
             {/* Copany image pathname + exchangeable product name + company name + needed amount of points */}
             <div className="pointsExchangeCard">
-                <div class="companyLogoWrapper">
+                <div className="companyLogoWrapper">
                     <img className="companyLogo" src={example} alt="(Company name) Logo"></img>
                 </div>
 
