@@ -1,34 +1,31 @@
 import React from "react";
-import "./Acties.css";
+import { Link } from "react-router-dom";
 
-class Acties extends React.Component {
+import "./Acties.scss";
 
-    constructor(props) {
-        super(props);
-        this.state = {};
-    }
+import example from "./img/exampleComp.jpg";
 
-    render() {
-        return (
-            <div>
-                {/* Users current amount of points */}
-                <p id="personalPoints" className="points">(Not received)</p>
+const Acties = (props) => {
+    return (
+        <div id="acties">
+            <Link to="/"><i class="material-icons">arrow_back</i></Link>
+            {/* Users current amount of points */}
+            <p id="personalPoints" className="points">{props.punten || 0} Punten</p>
 
-                {/* Copany image pathname + exchangeable product name + company name + needed amount of points */}
-                <div className="pointsExchangeCard">
-                    <div class="companyLogoWrapper">
-                        <img className="companyLogo" src="./img/exampleComp.jpg" alt="(Company name) Logo"></img>
-                    </div>
+            {/* Company image pathname + exchangeable product name + company name + needed amount of points */}
+            <div className="pointsExchangeCard">
+                <figure>
+                    <img src={example} alt="(Company name) Logo"></img>
+                </figure>
 
-                    <div className="exchangeCardTextInfoContainer">
-                        <h1 className="companyName infoText">Example Comp.</h1>
-                        <p className="productDescription infoText">GRATIS Product</p>
-                        <p className="cardPoints points infoText">5000</p>
-                    </div>
+                <div>
+                    <h1 className="companyName infoText">Example Comp.</h1>
+                    <p className="productDescription infoText">GRATIS Product</p>
+                    <p className="cardPoints points infoText">5000</p>
                 </div>
             </div>
-        );
-    }
+        </div>
+    );
 }
 
 export default Acties;
