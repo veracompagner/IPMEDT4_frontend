@@ -1,5 +1,6 @@
 import React from "react";
-import "./Acties.css";
+
+import "./Acties.scss";
 
 import example from "./img/exampleComp.jpg";
 
