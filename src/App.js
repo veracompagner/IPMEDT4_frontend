@@ -5,7 +5,6 @@ import axios from "axios";
 
 import Login from "./Login";
 import Register from "./Register";
-import Hoi from "./Hoi";
 import Acties from "./Acties";
 
 import "./App.scss";
