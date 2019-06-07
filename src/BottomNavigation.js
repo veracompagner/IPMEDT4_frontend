@@ -1,50 +1,45 @@
 import React from 'react';
-// import "./BottomNavigation.css"
-import { makeStyles } from '@material-ui/core/styles';
-import BottomNavigation from '@material-ui/core/BottomNavigation';
-import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import LocationOnIcon from '@material-ui/icons/LocationOn';
+import "./BottomNavigation.scss"
+import 'material-design-icons/iconfont/material-icons.css';
 
-const useStyles = makeStyles({
-  root: {
-    marginTop: "190px",
-    width: "100%",
-    backgroundColor: "#003373",
-    paddingTop: "10px",
-    paddingBottom: "10px",
-    
-  },
-  selected: {
-    color: "white",
-    
-    '&$selected': {
-      color: "white",
-      
-    },
-  },
-  label: {
-    color: "white",
-    fontSize: "40px",
-    
-  }
-});
 
-function LabelBottomNavigation() {
-  const classes = useStyles();
-  const [value, setValue] = React.useState('recents');
-
-  function handleChange(event, newValue) {
-    setValue(newValue);
-  }
+export default class BottomNavigation extends React.Component {
+ 
+	constructor() {
+		super();
+		this.state = {
+			shown: true,
+		};
+	}	
+	
+	toggle() {
+		this.setState({
+			shown: !this.state.shown
+		});
+	}
+		
+	render() {
+		var shown = {
+			visibility: this.state.shown ? "visible" : "hidden"
+		};
+		
+		var hidden = {
+			visibility: this.state.shown ? "hidden" : "visible"
+		}
+  
 
   return (
-    <BottomNavigation value={value} onChange={handleChange} className={classes.root}>
-      <BottomNavigationAction label="Acties" value="Acties" icon={<FavoriteIcon className={classes.label}/>} className={(classes.selected)}/>
-      <BottomNavigationAction label="Vertraging" value="vertraging" icon={<LocationOnIcon className={classes.label}/> } className={classes.selected} />
-    </BottomNavigation>
-  );
+      <div className="bottomNavigation-root" >
+        <button onClick={this.toggle.bind(this)}  className="bottomNavigation-buttons"><i className="material-icons bottomNavigation-icons">favorite</i> <span style={shown}>Acties</span></button>
+        <button onClick={this.toggle.bind(this)} className="bottomNavigation-buttons"><i className="material-icons bottomNavigation-icons">location_on</i><span  style={hidden}>Vertraging</span> </button>
+      </div>
+    );  
+  }
 }
 
+  
+  
+ 
 
-export default LabelBottomNavigation
+
+
