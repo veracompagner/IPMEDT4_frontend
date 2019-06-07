@@ -4,19 +4,19 @@ import "./Acties.scss";
 
 import example from "./img/exampleComp.jpg";
 
-const Acties = () => {
+const Acties = (props) => {
     return (
-        <div>
+        <div id="acties">
             {/* Users current amount of points */}
-            <p id="personalPoints" className="points">(Not received)</p>
+            <p id="personalPoints" className="points">{props.punten || 0} Punten</p>
 
-            {/* Copany image pathname + exchangeable product name + company name + needed amount of points */}
+            {/* Company image pathname + exchangeable product name + company name + needed amount of points */}
             <div className="pointsExchangeCard">
-                <div className="companyLogoWrapper">
-                    <img className="companyLogo" src={example} alt="(Company name) Logo"></img>
-                </div>
+                <figure>
+                    <img src={example} alt="(Company name) Logo"></img>
+                </figure>
 
-                <div className="exchangeCardTextInfoContainer">
+                <div>
                     <h1 className="companyName infoText">Example Comp.</h1>
                     <p className="productDescription infoText">GRATIS Product</p>
                     <p className="cardPoints points infoText">5000</p>

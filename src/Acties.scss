@@ -1,78 +1,70 @@
-#personalPoints{
-	float: right;
-}
+#acties {
+    padding: 16px;
 
-.points{
-	color: blue;
-	font-weight: bold;
-}
+    #personalPoints{
+        float: right;
+    }
 
-.points::after {
-	content: " Punten";
-}
+    .points{
+        color: blue;
+        font-weight: bold;
+        margin-top: 0;
+    }
 
-.pointsExchangeCard{
-	width: 100%;
-	height: 112px;
-	overflow: hidden;
-	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-	transition: box-shadow 0.3s cubic-bezier(.25,.8,.25,1);
-	padding: 16px;
-	box-sizing: border-box;
-	background-color: #EEEEEE;
-}
+    .pointsExchangeCard{
+        display: flex;
+        width: 100%;
+        padding: 16px;
+        box-sizing: border-box;
+        background-color: #EEEEEE;
+        border-radius: 5px;
 
-.pointsExchangeCard:hover {
-	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
-}
+        box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+        transition: box-shadow 0.3s cubic-bezier(.25,.8,.25,1);
 
-.companyLogoWrapper{
-	width: 80px;
-	height: 80px;
-	display: inline;
-	float: left;
-	position: relative;
-}
+        &:hover {
+            box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+        }
 
-.companyLogo{
-	position: absolute;
-	top: 0;
-	bottom: 0;
-	left: 0;
-	right: 0;
-	max-width: 100%;
-	max-height: 100%;
-	margin: auto;
-}
+        figure {
+            width: 80px;
+            height: 80px;
+            margin: 0;
+            margin-right: 16px;
+            position: relative;
 
-.exchangeCardTextInfoContainer{
-	float: left;
-	display: inline;
-	margin-left: 16px;
-	height: 100%;
-	position: relative;
-}
+            img {
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                max-width: 100%;
+                max-height: 100%;
+                margin: auto;
+            }
+        }
 
-.infoText{
-	margin: 0;
-	padding: 0;
-}
+        div {
+            position: relative;
+        }
 
-.companyName{
-	font-size: 20px;
-	line-height: 1.2em;
-}
+        .infoText{
+            margin: 0;
+        }
 
-.productDescription{
-	font-size: 16px;
-	line-height: 1.1em;
-}
+        .companyName{
+            font-size: 20px;
+        }
 
-.points{
-	font-size: 18px;
-}
+        .points{
+            font-size: 18px;
+        }
 
-.cardPoints{
-	position: absolute;
-	bottom: 0;
+        .cardPoints{
+            position: absolute;
+            bottom: 0;
+        }
+    }
+
 }
