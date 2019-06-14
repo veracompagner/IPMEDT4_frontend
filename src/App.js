@@ -7,6 +7,7 @@ import Login from "./Login";
 import Register from "./Register";
 import Hoi from "./Hoi";
 import Acties from "./Acties";
+import Overzicht from "./Overzicht";
 
 import "./App.scss";
 
@@ -24,8 +25,9 @@ class App extends React.Component {
             isLoggedIn: false,
             user: {}
         };
-        this.apiurl = "http://" + window.location.hostname + ":8000/api";
+        // this.apiurl = "http://" + window.location.hostname + ":8000/api";
         // this.apiurl = "http://IPMEDT4_api.test/api"; Meuk voor matthijs
+        this.apiurl = "http://9048123a.ngrok.io/api";
     }
 
     loginUser = (email, password) => {
@@ -131,6 +133,7 @@ class App extends React.Component {
                 <Route path="/login" render={props => <Login {...props} loginUser={this.loginUser} />} />
                 <Route path="/register" render={props => <Register {...props} registerUser={this.registerUser} />} />
                 <Route path="/acties" component={Acties} />
+                <Route path="/overzicht" component={Overzicht} />
             </Switch>
         )
     }
