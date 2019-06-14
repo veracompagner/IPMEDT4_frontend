@@ -58,9 +58,8 @@ class App extends React.Component {
             } else console.log("Login Failed!");
         })
         .catch(error => {
-            console.log(`An Error Occured! ${error}`);
-            console.log(JSON.stringify(error.response.data));
-            alert(error.response.data.error)
+            //Errorhandling, only 1 kind of error possible, so it is a standard
+            ReactDOM.render(<Alert foutmeldingen={"De inloggegevens zijn onjuist"}></Alert>, document.getElementById('modal-root'));
         });
     };
 
