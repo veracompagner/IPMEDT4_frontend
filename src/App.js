@@ -55,6 +55,7 @@ class App extends React.Component {
                     isLoggedIn: appState.isLoggedIn,
                     user: appState.user
                 });
+                ReactDOM.render(<Alert foutmeldingen={""}></Alert>, document.getElementById('modal-root'));
             } else console.log("Login Failed!");
         })
         .catch(error => {
@@ -90,6 +91,7 @@ class App extends React.Component {
                         isLoggedIn: appState.isLoggedIn,
                         user: appState.user
                     });
+                    ReactDOM.render(<Alert foutmeldingen={""}></Alert>, document.getElementById('modal-root'));
                 } else console.log(`Registration Failed!`);
             }
 
