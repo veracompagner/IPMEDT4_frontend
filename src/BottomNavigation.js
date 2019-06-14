@@ -1,7 +1,8 @@
 import React from 'react';
-import "./BottomNavigation.scss"
+import "./BottomNavigation.scss";
+import Ripple from './Ripple';
 import 'material-design-icons/iconfont/material-icons.css';
-
+///Component overbodig
 
 export default class BottomNavigation extends React.Component {
  
@@ -30,9 +31,11 @@ export default class BottomNavigation extends React.Component {
 
   return (
       <div className="bottomNavigation-root" >
-        <button onClick={this.toggle.bind(this)}  className="bottomNavigation-buttons"><i className="material-icons bottomNavigation-icons">favorite</i> <span style={shown}>Acties</span></button>
-        <button onClick={this.toggle.bind(this)} className="bottomNavigation-buttons"><i className="material-icons bottomNavigation-icons">location_on</i><span  style={hidden}>Vertraging</span> </button>
-      </div>
+        <Ripple onClick={this.toggle.bind(this)}  className="bottomNavigation-buttons"><i className="material-icons bottomNavigation-icons">favorite</i> <span style={shown}>Acties</span>
+				</Ripple>
+				<Ripple onClick={this.toggle.bind(this)} className="bottomNavigation-buttons"><i className="material-icons bottomNavigation-icons">location_on</i><span  style={hidden}>Vertraging</span>
+				</Ripple>
+			</div>
     );  
   }
 }
