@@ -5,6 +5,10 @@ import Hoi from "./Hoi";
 import Acties from "./Acties";
 import Auth from "./Auth";
 
+//Redux
+import { Provider } from "react-redux";
+import { store } from "./store";
+
 import "./App.scss";
 
 class App extends React.Component {
@@ -17,10 +21,10 @@ class App extends React.Component {
      **/
     constructor(props) {
         super(props);
-        this.state = {
-            isLoggedIn: false,
-            user: {}
-        };
+        // this.state = {
+        //     isLoggedIn: false,
+        //     user: {}
+        // };
         this.apiurl = "http://" + window.location.hostname + ":8000/api";
         // this.apiurl = "http://IPMEDT4_api.test/api"; Meuk voor matthijs
     }
