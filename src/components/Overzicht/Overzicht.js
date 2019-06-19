@@ -1,11 +1,10 @@
 import React from 'react';
 
-import Cards from "./Cards"
+import Card from "../Card"
 import Ripple from './Ripple'
 
 import 'material-design-icons/iconfont/material-icons.css';
 
-import "./BottomNavigation.scss"
 import "./Overzicht.scss"
 
 import logoZonder from "../../img/appLogoZonder.png";
@@ -20,9 +19,10 @@ class Overzicht extends React.Component {
                     <p className="overzicht-punten-text">0000</p>
                 </div>
                 <div className="overzicht-cards">
-                    <Cards
+                    <Card
                         title="Gratis Snack"
                         text="Smullers"
+                        points="2000"
                         img={smullers}
                     />
                 </div>

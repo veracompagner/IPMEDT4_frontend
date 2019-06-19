@@ -1,45 +1,43 @@
 import React from 'react';
 
+import "./Ripple.scss"
+
 export default class Ripple extends React.Component {
-    constructor(props){
+    constructor(props) {
         super(props);
         this.state = {
-          clicked: false,
+            clicked: false,
         };
         this.rippleEffect = this.rippleEffect.bind(this);
-      }
-      
-      rippleEffect(event){
+    }
+
+    rippleEffect(event){
         const posX = (event.pageX - event.target.offsetLeft) - 25;
         const posY = (event.pageY / event.target.offsetHeight) - 0;
         this.setState({
-          clicked: !this.state.clicked,
-          posX,
-          posY,
+            clicked: !this.state.clicked,
+            posX,
+            posY,
         });
         const self = this;
         setTimeout(() => {
-          this.setState({
-            clicked: !self.state.clicked,
-          })
+            this.setState({
+                clicked: !self.state.clicked,
+            })
         }, 600);
-      }
+    }
 
-      
-      render(){
+    render(){
         return (
-            <div className="bottomNavigation-div">
-                <button onClick={this.rippleEffect}  
-                    className="bottomNavigation-buttons">
-                    <i className="material-icons bottomNavigation-icons">{this.props.icon}</i> 
+            <div className="ripple-div">
+                <button onClick={this.rippleEffect}
+                    className="ripple-buttons">
+                    <i className="material-icons ripple-icons">{this.props.icon}</i>
                     {this.props.name}
-                    { this.state.clicked
-                && <span className="ink" style={{ top: `${this.state.posY}px`, left: `${this.state.posX}px` }} /> }
+                    { this.state.clicked && <span className="ripple-ink" style={{ top: `${this.state.posY}px`, left: `${this.state.posX}px` }} /> }
                 </button>
             </div>
-          
-        
-            );
-      }
+        );
+    }
 
 }

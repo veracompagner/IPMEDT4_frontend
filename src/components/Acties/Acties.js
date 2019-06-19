@@ -1,31 +1,28 @@
+// Import React and the Link component from React-Router
 import React from "react";
 import { Link } from "react-router-dom";
 
+// Import SCSS
 import "./Acties.scss";
 
+// Import Card component
+import Card from "../Card";
+
+// Import Images
 import example from "../../img/exampleComp.jpg";
 
-const Acties = (props) => {
-    return (
-        <div id="acties">
-            <Link to="/"><i class="material-icons">arrow_back</i></Link>
-            {/* Users current amount of points */}
-            <p id="personalPoints" className="points">{props.punten || 0} Punten</p>
+// Define functional component
+const Acties = props => (
+    <div id="acties">
+        {/* Back arrow */}
+        <Link to="/"><i className="material-icons">arrow_back</i></Link>
 
-            {/* Company image pathname + exchangeable product name + company name + needed amount of points */}
-            <div className="pointsExchangeCard">
-                <figure>
-                    <img src={example} alt="(Company name) Logo"></img>
-                </figure>
+        {/* Users current amount of points, when none are supplied defaults to 0 */}
+        <p id="personalPoints" className="points">{props.punten || 0} Punten</p>
 
-                <div>
-                    <h1 className="companyName infoText">Example Comp.</h1>
-                    <p className="productDescription infoText">GRATIS Product</p>
-                    <p className="cardPoints points infoText">5000</p>
-                </div>
-            </div>
-        </div>
-    );
-}
+        {/* Company image + exchangeable product name + company name + needed amount of points */}
+        <Card img={example} title="Example Comp." text="GRATIS Product" points="5000"/>
+    </div>
+);
 
 export default Acties;
