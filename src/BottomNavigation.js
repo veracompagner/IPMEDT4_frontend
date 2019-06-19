@@ -1,5 +1,5 @@
 import React from 'react';
-import "./css/BottomNavigation.scss";
+import "./scss/BottomNavigation.scss";
 import Ripple from './Ripple';
 import 'material-design-icons/iconfont/material-icons.css';
 //Component overbodig

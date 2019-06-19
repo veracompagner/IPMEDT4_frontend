@@ -5,8 +5,8 @@ import Ripple from './Ripple'
 
 import 'material-design-icons/iconfont/material-icons.css';
 
-import "./css/BottomNavigation.scss"
-import "./css/Overzicht.scss"
+import "./scss/BottomNavigation.scss"
+import "./scss/Overzicht.scss"
 
 import logoZonder from "./img/appLogoZonder.png";
 import smullers from "./img/smullers.jpeg";

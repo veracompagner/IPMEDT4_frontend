@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import "./css/Acties.scss";
+import "./scss/Acties.scss";
 
 import example from "./img/exampleComp.jpg";
 

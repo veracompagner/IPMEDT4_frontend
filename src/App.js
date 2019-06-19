@@ -8,7 +8,7 @@ import Auth from "./Auth";
 import Overzicht from "./Overzicht";
 
 
-import "./css/App.scss";
+import "./scss/App.scss";
 
 class App extends React.Component {
 
