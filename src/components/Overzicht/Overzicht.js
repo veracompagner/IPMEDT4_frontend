@@ -5,11 +5,11 @@ import Ripple from './Ripple'
 
 import 'material-design-icons/iconfont/material-icons.css';
 
-import "./scss/BottomNavigation.scss"
-import "./scss/Overzicht.scss"
+import "./BottomNavigation.scss"
+import "./Overzicht.scss"
 
-import logoZonder from "./img/appLogoZonder.png";
-import smullers from "./img/smullers.jpeg";
+import logoZonder from "../../img/appLogoZonder.png";
+import smullers from "../../img/smullers.jpeg";
 
 class Overzicht extends React.Component {
     render(){

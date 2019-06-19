@@ -1,6 +1,6 @@
 
 import React from 'react'
-import "./scss/Cards.scss";
+import "./Cards.scss";
 
 function Cards(props){
 

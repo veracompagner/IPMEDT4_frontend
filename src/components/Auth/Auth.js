@@ -3,17 +3,18 @@ import axios from "axios";
 import { Switch, Route } from "react-router-dom";
 import { connect } from "react-redux";
 
+import { APIURL } from "../../constants/constants";
+
 import Login from "./Login";
 import Register from "./Register";
 import Logout from "./Logout";
-import { changeIsLoggedIn, changeUser } from "./actions";
+import { changeIsLoggedIn, changeUser } from "../../redux/actions";
 import Alert from "./Alert";
 
 class Auth extends React.Component {
 
     constructor(props) {
         super(props);
-        this.apiurl = "http://" + window.location.hostname + ":8000/api";
         this.state = {
             melding: null
         };
@@ -25,7 +26,7 @@ class Auth extends React.Component {
         formData.append("email", email);
         formData.append("password", password);
 
-        axios.post(this.apiurl + "/login", formData)
+        axios.post(APIURL + "/login", formData)
         .then(json => {
             if (json.data.token) {
                 let appState = {
@@ -60,7 +61,7 @@ class Auth extends React.Component {
         formData.append("password", password);
         formData.append("password_confirmation", password_confirmation);
 
-        axios.post(this.apiurl + "/register", formData)
+        axios.post(APIURL + "/register", formData)
             .then(json => {
                 if (json.data.token) {
                     let appState = {

@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import "./scss/Acties.scss";
+import "./Acties.scss";
 
-import example from "./img/exampleComp.jpg";
+import example from "../../img/exampleComp.jpg";
 
 const Acties = (props) => {
     return (
