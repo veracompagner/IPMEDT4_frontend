@@ -7,12 +7,16 @@ import Login from "./Login";
 import Register from "./Register";
 import Logout from "./Logout";
 import { changeIsLoggedIn, changeUser } from "./actions";
+import Alert from "./Alert";
 
 class Auth extends React.Component {
 
     constructor(props) {
         super(props);
         this.apiurl = "http://" + window.location.hostname + ":8000/api";
+        this.state = {
+            melding: null
+        };
     }
 
     loginUser = (email, password) => {
@@ -38,16 +42,12 @@ class Auth extends React.Component {
                 localStorage["appState"] = JSON.stringify(appState);
                 this.props.dispatch(changeIsLoggedIn(appState.isLoggedIn));
                 this.props.dispatch(changeUser(appState.user));
-                // this.setState({
-                //     isLoggedIn: appState.isLoggedIn,
-                //     user: appState.user
-                // });
+                this.setState({melding: null});
             } else console.log("Login Failed!");
         })
         .catch(error => {
-            console.log(`An Error Occured! ${error}`);
-            console.log(JSON.stringify(error.response.data));
-            alert(error.response.data.error)
+            //Errorhandling, only 1 kind of error possible, so it is a standard
+            this.setState({melding: "De inloggegevens zijn onjuist"});
         });
     };
 
@@ -77,14 +77,32 @@ class Auth extends React.Component {
                     localStorage["appState"] = JSON.stringify(appState);
                     this.props.dispatch(changeIsLoggedIn(appState.isLoggedIn));
                     this.props.dispatch(changeUser(appState.user));
-                    // this.setState({
-                    //     isLoggedIn: appState.isLoggedIn,
-                    //     user: appState.user
-                    // });
+                    this.setState({melding: null});
                 } else console.log(`Registration Failed!`);
             })
             .catch(error => {
-                console.log("An Error Occured!" + error);
+                //Errorhandling, taking a JSON list and then translating to Dutch
+                //Shows most important errors first (email, password,name)
+                var registerErrors = JSON.parse(error.response.data);
+                var melding = "";
+                if(registerErrors['email']){
+                    if(registerErrors['email'].includes("The email must be a valid email address.")){
+                        melding = "Voer een geldig e-mailadres in."
+                    }else if(registerErrors['email'].includes("The email has already been taken.")){
+                        melding = "Dit e-mailadres bestaat al."
+                    }
+                }else if(registerErrors['password']){
+                    if(registerErrors['password'].includes("The password must be at least 6 characters.")){
+                        melding = "Het wachtwoord moet minimaal 6 karakters lang zijn."
+                    }else if(registerErrors['password'].includes("The password confirmation does not match.")){
+                        melding = "De wachtwoorden komen niet overeen."
+                    }
+                }else if(registerErrors['name'].includes("The name field is required.")){
+                    melding = "Er moet een gebruikersnaam opgegeven worden."
+                }else{
+                    melding = "Er is iets fout gegaan met registreren, check uw gegevens en probeer opnieuw."
+                }
+                this.setState({melding: melding});
             });
     };
 
@@ -95,7 +113,6 @@ class Auth extends React.Component {
         };
         // save app state with user date in local storage
         localStorage["appState"] = JSON.stringify(appState);
-        // this.setState(appState);
         this.props.dispatch(changeIsLoggedIn(appState.isLoggedIn));
         this.props.dispatch(changeUser(appState.user));
     };
@@ -107,20 +124,19 @@ class Auth extends React.Component {
 
             this.props.dispatch(changeIsLoggedIn(appState.isLoggedIn));
             this.props.dispatch(changeUser(appState.user));
-            // this.setState({
-            //     isLoggedIn: AppState.isLoggedIn,
-            //     user: AppState.user
-            // });
         }
     }
 
     render(){
         return(
-            <Switch>
-                <Route path="/auth/login" render={props => <Login {...props} loginUser={this.loginUser} />} />
-                <Route path="/auth/register" render={props => <Register {...props} registerUser={this.registerUser} />} />
-                <Route path="/auth/logout" render={props => <Logout {...props} logoutUser={this.logoutUser} />} />
-            </Switch>
+            <div>
+                <Switch>
+                    <Route path="/auth/login" render={props => <Login {...props} loginUser={this.loginUser} />} />
+                    <Route path="/auth/register" render={props => <Register {...props} registerUser={this.registerUser} />} />
+                    <Route path="/auth/logout" render={props => <Logout {...props} logoutUser={this.logoutUser} />} />
+                </Switch>
+                <Alert foutmeldingen={this.state.melding}></Alert>
+            </div>
         )
     }
 
