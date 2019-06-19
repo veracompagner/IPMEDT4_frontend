@@ -1,5 +1,4 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import { Switch, Route, Redirect, withRouter } from "react-router-dom";
 
 import axios from "axios";
@@ -24,14 +23,15 @@ class App extends React.Component {
         super(props);
         this.state = {
             isLoggedIn: false,
-            user: {}
+            user: {},
+            melding: null,
         };
         this.apiurl = "http://" + window.location.hostname + ":8000/api";
-        this.modalroot = document.getElementById('modal-root');
         // this.apiurl = "http://IPMEDT4_api.test/api"; Meuk voor matthijs
     }
 
     loginUser = (email, password) => {
+
         var formData = new FormData();
         formData.append("email", email);
         formData.append("password", password);
@@ -55,16 +55,17 @@ class App extends React.Component {
                     isLoggedIn: appState.isLoggedIn,
                     user: appState.user
                 });
-                ReactDOM.render(<Alert foutmeldingen={""}></Alert>, document.getElementById('modal-root'));
+                this.setState({melding: null});
             } else console.log("Login Failed!");
         })
         .catch(error => {
             //Errorhandling, only 1 kind of error possible, so it is a standard
-            ReactDOM.render(<Alert foutmeldingen={"De inloggegevens zijn onjuist"}></Alert>, document.getElementById('modal-root'));
+            this.setState({melding: "De inloggegevens zijn onjuist"});
         });
     };
 
     registerUser = (name, email, password, password_confirmation) => {
+
         var formData = new FormData();
 
         formData.append("name", name);
@@ -91,11 +92,9 @@ class App extends React.Component {
                         isLoggedIn: appState.isLoggedIn,
                         user: appState.user
                     });
-                    ReactDOM.render(<Alert foutmeldingen={""}></Alert>, document.getElementById('modal-root'));
+                    this.setState({melding: null});
                 } else console.log(`Registration Failed!`);
-            }
-
-            )
+            })
             .catch(error => {
                 //Errorhandling, taking a JSON list and then translating to Dutch
                 //Shows most important errors first (email, password,name)
@@ -118,7 +117,7 @@ class App extends React.Component {
                 }else{
                     melding = "Er is iets fout gegaan met registreren, check uw gegevens en probeer opnieuw."
                 }
-                ReactDOM.render(<Alert foutmeldingen={melding}></Alert>, document.getElementById('modal-root'));
+                this.setState({melding: melding});
             });
     };
 
@@ -142,6 +141,7 @@ class App extends React.Component {
             });
         }
     };
+
     render(){
         if (!this.state.isLoggedIn && this.props.location.pathname !== "/login" && this.props.location.pathname !== "/register") {
             return <Redirect to="/login" />;
@@ -150,12 +150,15 @@ class App extends React.Component {
             return <Redirect to="/" />;
         }
         return(
+            <div>
             <Switch>
                 <Route exact path='/' render={props => <Hoi {...props} logoutUser={this.logoutUser} user={this.state.user} apiurl={this.apiurl}/>} />
                 <Route path="/login" render={props => <Login {...props} loginUser={this.loginUser} />} />
                 <Route path="/register" render={props => <Register {...props} registerUser={this.registerUser} />} />
                 <Route path="/acties" component={Acties} />
             </Switch>
+            <Alert foutmeldingen={this.state.melding}></Alert>
+            </div>
         )
     }
 }
