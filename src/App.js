@@ -1,13 +1,10 @@
 import React from "react";
 import { Switch, Route, Redirect, withRouter } from "react-router-dom";
+import { connect } from "react-redux";
 
 import Hoi from "./Hoi";
 import Acties from "./Acties";
 import Auth from "./Auth";
-
-//Redux
-import { Provider } from "react-redux";
-import { store } from "./store";
 
 import "./App.scss";
 
@@ -30,15 +27,15 @@ class App extends React.Component {
     }
 
     render(){
-        if (!this.state.isLoggedIn && this.props.location.pathname !== "/auth/login" && this.props.location.pathname !== "/auth/register") {
+        if (!this.props.isLoggedIn && this.props.location.pathname !== "/auth/login" && this.props.location.pathname !== "/auth/register") {
             return <Redirect to="/auth/login" />;
         }
-        if (this.state.isLoggedIn && (this.props.location.pathname === "/login" || this.props.location.pathname === "/register")) {
+        if (this.props.isLoggedIn && (this.props.location.pathname === "/auth/login" || this.props.location.pathname === "/auth/register")) {
             return <Redirect to="/" />;
         }
         return(
             <Switch>
-                <Route exact path='/' render={props => <Hoi {...props} logoutUser={this.logoutUser} user={this.state.user} apiurl={this.apiurl}/>} />
+                <Route exact path='/' render={props => <Hoi {...props} logoutUser={Auth.logoutUser} user={this.props.user} apiurl={this.apiurl}/>} />
                 <Route path="/acties" component={Acties} />
                 <Route path="/auth" component={Auth} />
             </Switch>
@@ -46,4 +43,12 @@ class App extends React.Component {
         )
     }
 }
-export default withRouter(App);
+
+const mapStateToProps = state => {
+    return {
+        isLoggedIn: state.isLoggedIn,
+        user: state.user
+    }
+}
+
+export default connect(mapStateToProps)(withRouter(App));

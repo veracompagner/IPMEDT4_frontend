@@ -1,13 +1,18 @@
 import React from "react";
 import axios from "axios";
-import { Switch, Route, Redirect, withRouter } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
+import { connect } from "react-redux";
 
 import Login from "./Login";
 import Register from "./Register";
+import Logout from "./Logout";
+import { changeIsLoggedIn, changeUser } from "./actions";
 
 class Auth extends React.Component {
+
     constructor(props) {
         super(props);
+        this.apiurl = "http://" + window.location.hostname + ":8000/api";
     }
 
     loginUser = (email, password) => {
@@ -31,10 +36,12 @@ class Auth extends React.Component {
                 };
                 // save app state with user date in local storage
                 localStorage["appState"] = JSON.stringify(appState);
-                this.setState({
-                    isLoggedIn: appState.isLoggedIn,
-                    user: appState.user
-                });
+                this.props.dispatch(changeIsLoggedIn(appState.isLoggedIn));
+                this.props.dispatch(changeUser(appState.user));
+                // this.setState({
+                //     isLoggedIn: appState.isLoggedIn,
+                //     user: appState.user
+                // });
             } else console.log("Login Failed!");
         })
         .catch(error => {
@@ -68,10 +75,12 @@ class Auth extends React.Component {
                     };
                     // save app state with user date in local storage
                     localStorage["appState"] = JSON.stringify(appState);
-                    this.setState({
-                        isLoggedIn: appState.isLoggedIn,
-                        user: appState.user
-                    });
+                    this.props.dispatch(changeIsLoggedIn(appState.isLoggedIn));
+                    this.props.dispatch(changeUser(appState.user));
+                    // this.setState({
+                    //     isLoggedIn: appState.isLoggedIn,
+                    //     user: appState.user
+                    // });
                 } else console.log(`Registration Failed!`);
             })
             .catch(error => {
@@ -86,17 +95,22 @@ class Auth extends React.Component {
         };
         // save app state with user date in local storage
         localStorage["appState"] = JSON.stringify(appState);
-        this.setState(appState);
+        // this.setState(appState);
+        this.props.dispatch(changeIsLoggedIn(appState.isLoggedIn));
+        this.props.dispatch(changeUser(appState.user));
     };
 
     componentWillMount = () => {
         let state = localStorage["appState"];
         if (state) {
-            let AppState = JSON.parse(state);
-            this.setState({
-                isLoggedIn: AppState.isLoggedIn,
-                user: AppState.user
-            });
+            let appState = JSON.parse(state);
+
+            this.props.dispatch(changeIsLoggedIn(appState.isLoggedIn));
+            this.props.dispatch(changeUser(appState.user));
+            // this.setState({
+            //     isLoggedIn: AppState.isLoggedIn,
+            //     user: AppState.user
+            // });
         }
     }
 
@@ -105,10 +119,18 @@ class Auth extends React.Component {
             <Switch>
                 <Route path="/auth/login" render={props => <Login {...props} loginUser={this.loginUser} />} />
                 <Route path="/auth/register" render={props => <Register {...props} registerUser={this.registerUser} />} />
+                <Route path="/auth/logout" render={props => <Logout {...props} logoutUser={this.logoutUser} />} />
             </Switch>
         )
     }
 
 }
 
-export default Auth;
+const mapStateToProps = state => {
+    return {
+        isLoggedIn: state.isLoggedIn,
+        user: state.user
+    }
+}
+
+export default connect(mapStateToProps)(Auth);

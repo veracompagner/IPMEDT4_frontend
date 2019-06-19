@@ -10,9 +10,9 @@ const Hoi = props => {
     return (
         <div>
             <p>Hallo!!</p>
-            <button onClick={props.logoutUser}>
+            <Link to="/auth/logout"><button>
                 Logout
-            </button>
+            </button></Link>
             <p>
                 <Link to="/acties">Acties pagina</Link>
             </p>
