@@ -1,51 +1,48 @@
+// Import React and several components for React-Router and Redux
 import React from "react";
 import { Switch, Route, Redirect, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 
-import Hoi from "./Hoi";
-import Acties from "./Acties";
-import Auth from "./Auth";
-import Overzicht from "./Overzicht";
+// Import SCSS
+import "./App.scss";
 
+// Import Components used in main routes
+import Hoi from "./components/Hoi/Hoi";
+import Auth from "./components/Auth/Auth";
+import Overzicht from "./components/Overzicht/Overzicht";
+import Acties from "./components/Acties/Acties";
 
-import "./scss/App.scss";
+// Main functional component
+const App = props => {
+    // Link consts to props for smaller code
+    const isLoggedIn = props.isLoggedIn;
+    const pathname = props.location.pathname;
 
-class App extends React.Component {
-
-    /**
-     * @func constructor
-     * @param props
-     * This function initializes the state for isLoggedIn
-     * It shows whether a user has logged in or not
-     **/
-    constructor(props) {
-        super(props);
-        this.apiurl = "http://" + window.location.hostname + ":8000/api";
+    // Check for logged in status and page, and redirect accordingly
+    if (!isLoggedIn && pathname !== "/auth/login" && pathname !== "/auth/register") {
+        return <Redirect to="/auth/login" />;
+    }
+    if (isLoggedIn && (pathname === "/auth/login" || pathname === "/auth/register")) {
+        return <Redirect to="/" />;
     }
 
-    render(){
-        if (!this.props.isLoggedIn && this.props.location.pathname !== "/auth/login" && this.props.location.pathname !== "/auth/register") {
-            return <Redirect to="/auth/login" />;
-        }
-        if (this.props.isLoggedIn && (this.props.location.pathname === "/auth/login" || this.props.location.pathname === "/auth/register")) {
-            return <Redirect to="/" />;
-        }
-        return(
-            <Switch>
-                <Route exact path='/' render={props => <Hoi {...props} logoutUser={Auth.logoutUser} user={this.props.user} apiurl={this.apiurl}/>} />
-                <Route path="/acties" component={Acties} />
-                <Route path="/auth" component={Auth} />
-                <Route path="/overzicht" component={Overzicht} />
-            </Switch>
-        )
-    }
+    // Return Switch with all main routes
+    return (
+        <Switch>
+            <Route exact path='/' component={Hoi} />} />
+            <Route path="/auth" component={Auth} />
+            <Route path="/overzicht" component={Overzicht} />
+            <Route path="/acties" component={Acties} />
+        </Switch>
+    )
 }
 
+// Get isLoggedIn from state and map it to props
 const mapStateToProps = state => {
     return {
-        isLoggedIn: state.isLoggedIn,
-        user: state.user
+        isLoggedIn: state.isLoggedIn
     }
 }
 
+// connect to redux and run component with router to access pathnames
 export default connect(mapStateToProps)(withRouter(App));

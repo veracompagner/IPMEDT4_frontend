@@ -1,5 +1,5 @@
 import React from "react";
-import "./scss/Alert.scss";
+import "./Alert.scss";
 
 const Alert = (props) => {
     return (

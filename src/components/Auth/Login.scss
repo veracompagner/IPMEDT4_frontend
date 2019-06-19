@@ -1,7 +1,10 @@
-@import "variables";
+@import "../../constants/constants";
 
 #login, #register {
     padding: 15px;
+    background-color: $orange;
+    height: 100%;
+
     .logoImg {
         margin: 0 auto;
         width: 60%;

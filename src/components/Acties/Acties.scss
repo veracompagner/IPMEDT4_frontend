@@ -1,0 +1,17 @@
+@import "../../constants/constants";
+
+#acties {
+    padding: 16px;
+
+    #personalPoints{
+        float: right;
+    }
+
+    .points{
+        color: $blue;
+        font-weight: bold;
+        margin-top: 0;
+        font-size: 18px;
+    }
+
+}
