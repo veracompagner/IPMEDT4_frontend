@@ -1,3 +1,5 @@
+@import "variables";
+
 * {
     margin: 0 auto;
     padding: 0;
@@ -51,7 +53,7 @@ body {
     text-align: center;
     font-weight: bold;
     white-space: pre-line;
-    color: #003373;
+    color: $blue;
     z-index: 10;
     position: absolute;
     left: 50%;
