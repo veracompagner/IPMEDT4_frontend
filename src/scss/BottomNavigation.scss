@@ -1,13 +1,15 @@
+@import "variables";
+
 .bottomNavigation {
     &-div {
         width: 50%;
-        background-color: #003373;
+        background-color: $blue;
         text-align: center;
         display: inline-block;
     }
 
     &-buttons {
-        background-color: #003373;
+        background-color: $blue;
         border: none;
         color: white;
         padding: 15px 32px;
@@ -24,7 +26,7 @@
 
     &-icons.material-icons {
         margin-bottom: 5px;
-        fill: #fff;
+        fill: white;
         width: 1em;
         height: 1em;
         display: block;

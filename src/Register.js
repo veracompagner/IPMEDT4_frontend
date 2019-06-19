@@ -1,7 +1,7 @@
 import React from "react";
 import {Link} from "react-router-dom";
 
-import "./Login.scss";
+import "./scss/Login.scss";
 import logo from "./img/appLogo.png";
 
 const Register = ({registerUser}) => {

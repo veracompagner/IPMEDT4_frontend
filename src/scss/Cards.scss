@@ -1,7 +1,9 @@
+@import "variables";
+
 .cards-root {
     border-radius: 20px;
     width: 80%;
-    background-color: #FFC61E;
+    background-color: $orange;
     padding: 6%;
     box-shadow: 3px 3px 3px #ccc
 }
@@ -12,7 +14,7 @@
     margin: 5px;
     width: 30%;
     position: relative;
-    border: 5px solid #003373;
+    border: 5px solid $blue;
     border-radius: 10px;
 }
 

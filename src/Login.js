@@ -1,7 +1,7 @@
 import React from "react";
 import {Link} from "react-router-dom";
 
-import "./Login.scss";
+import "./scss/Login.scss";
 import logo from "./img/appLogo.png";
 
 const Login = ({loginUser}) => {
@@ -16,7 +16,6 @@ const Login = ({loginUser}) => {
         event.preventDefault();
         loginUser(email.value, password.value);
     };
-
     return (
         <div id="login">
             <img className="logoImg" src={logo} alt="appLogo"></img>
