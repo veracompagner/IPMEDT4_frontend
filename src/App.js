@@ -1,14 +1,12 @@
 import React from "react";
 import { Switch, Route, Redirect, withRouter } from "react-router-dom";
+import { connect } from "react-redux";
 
-import axios from "axios";
-
-import Login from "./Login";
-import Register from "./Register";
 import Hoi from "./Hoi";
 import Acties from "./Acties";
+import Auth from "./Auth";
 import Overzicht from "./Overzicht";
-import Alert from "./Alert";
+
 
 import "./App.scss";
 
@@ -22,145 +20,32 @@ class App extends React.Component {
      **/
     constructor(props) {
         super(props);
-        this.state = {
-            isLoggedIn: false,
-            user: {},
-            melding: null,
-        };
         this.apiurl = "http://" + window.location.hostname + ":8000/api";
     }
 
-    loginUser = (email, password) => {
-
-        var formData = new FormData();
-        formData.append("email", email);
-        formData.append("password", password);
-
-        axios.post(this.apiurl + "/login", formData)
-        .then(json => {
-            if (json.data.token) {
-                let appState = {
-                    isLoggedIn: true,
-                    user: {
-                        id: json.data.user.id,
-                        name: json.data.user.name,
-                        email: json.data.user.email,
-                        auth_token: json.data.token,
-                        timestamp: new Date().toString()
-                    }
-                };
-                // save app state with user date in local storage
-                localStorage["appState"] = JSON.stringify(appState);
-                this.setState({
-                    isLoggedIn: appState.isLoggedIn,
-                    user: appState.user
-                });
-                this.setState({melding: null});
-            } else console.log("Login Failed!");
-        })
-        .catch(error => {
-            //Errorhandling, only 1 kind of error possible, so it is a standard
-            this.setState({melding: "De inloggegevens zijn onjuist"});
-        });
-    };
-
-    registerUser = (name, email, password, password_confirmation) => {
-
-        var formData = new FormData();
-
-        formData.append("name", name);
-        formData.append("email", email);
-        formData.append("password", password);
-        formData.append("password_confirmation", password_confirmation);
-
-        axios.post(this.apiurl + "/register", formData)
-            .then(json => {
-                if (json.data.token) {
-                    let appState = {
-                        isLoggedIn: true,
-                        user: {
-                            id: json.data.user.id,
-                            name: json.data.user.name,
-                            email: json.data.user.email,
-                            auth_token: json.data.token,
-                            timestamp: new Date().toString()
-                        }
-                    };
-                    // save app state with user date in local storage
-                    localStorage["appState"] = JSON.stringify(appState);
-                    this.setState({
-                        isLoggedIn: appState.isLoggedIn,
-                        user: appState.user
-                    });
-                    this.setState({melding: null});
-                } else console.log(`Registration Failed!`);
-            })
-            .catch(error => {
-                //Errorhandling, taking a JSON list and then translating to Dutch
-                //Shows most important errors first (email, password,name)
-                var registerErrors = JSON.parse(error.response.data);
-                var melding = "";
-                if(registerErrors['email']){
-                    if(registerErrors['email'].includes("The email must be a valid email address.")){
-                        melding = "Voer een geldig e-mailadres in."
-                    }else if(registerErrors['email'].includes("The email has already been taken.")){
-                        melding = "Dit e-mailadres bestaat al."
-                    }
-                }else if(registerErrors['password']){
-                    if(registerErrors['password'].includes("The password must be at least 6 characters.")){
-                        melding = "Het wachtwoord moet minimaal 6 karakters lang zijn."
-                    }else if(registerErrors['password'].includes("The password confirmation does not match.")){
-                        melding = "De wachtwoorden komen niet overeen."
-                    }
-                }else if(registerErrors['name'].includes("The name field is required.")){
-                    melding = "Er moet een gebruikersnaam opgegeven worden."
-                }else{
-                    melding = "Er is iets fout gegaan met registreren, check uw gegevens en probeer opnieuw."
-                }
-                this.setState({melding: melding});
-            });
-    };
-
-    logoutUser = () => {
-        let appState = {
-            isLoggedIn: false,
-            user: {}
-        };
-        // save app state with user date in local storage
-        localStorage["appState"] = JSON.stringify(appState);
-        this.setState(appState);
-    };
-
-    componentWillMount = () => {
-        let state = localStorage["appState"];
-        if (state) {
-            let AppState = JSON.parse(state);
-            this.setState({
-                isLoggedIn: AppState.isLoggedIn,
-                user: AppState.user
-            });
-        }
-    };
-
     render(){
-        if (!this.state.isLoggedIn && this.props.location.pathname !== "/login" && this.props.location.pathname !== "/register") {
-            return <Redirect to="/login" />;
+        if (!this.props.isLoggedIn && this.props.location.pathname !== "/auth/login" && this.props.location.pathname !== "/auth/register") {
+            return <Redirect to="/auth/login" />;
         }
-        if (this.state.isLoggedIn && (this.props.location.pathname === "/login" || this.props.location.pathname === "/register")) {
+        if (this.props.isLoggedIn && (this.props.location.pathname === "/auth/login" || this.props.location.pathname === "/auth/register")) {
             return <Redirect to="/" />;
         }
         return(
-            <div>
             <Switch>
-                <Route exact path='/' render={props => <Hoi {...props} logoutUser={this.logoutUser} user={this.state.user} apiurl={this.apiurl}/>} />
-                <Route path="/login" render={props => <Login {...props} loginUser={this.loginUser} />} />
-                <Route path="/register" render={props => <Register {...props} registerUser={this.registerUser} />} />
+                <Route exact path='/' render={props => <Hoi {...props} logoutUser={Auth.logoutUser} user={this.props.user} apiurl={this.apiurl}/>} />
                 <Route path="/acties" component={Acties} />
+                <Route path="/auth" component={Auth} />
                 <Route path="/overzicht" component={Overzicht} />
             </Switch>
-            <Alert foutmeldingen={this.state.melding}></Alert>
-            </div>
         )
     }
 }
-export default withRouter(App);
+
+const mapStateToProps = state => {
+    return {
+        isLoggedIn: state.isLoggedIn,
+        user: state.user
+    }
+}
+
+export default connect(mapStateToProps)(withRouter(App));
