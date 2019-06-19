@@ -5,6 +5,8 @@ import { connect } from "react-redux";
 import Hoi from "./Hoi";
 import Acties from "./Acties";
 import Auth from "./Auth";
+import Overzicht from "./Overzicht";
+
 
 import "./App.scss";
 
@@ -33,6 +35,7 @@ class App extends React.Component {
                 <Route exact path='/' render={props => <Hoi {...props} logoutUser={Auth.logoutUser} user={this.props.user} apiurl={this.apiurl}/>} />
                 <Route path="/acties" component={Acties} />
                 <Route path="/auth" component={Auth} />
+                <Route path="/overzicht" component={Overzicht} />
             </Switch>
         )
     }

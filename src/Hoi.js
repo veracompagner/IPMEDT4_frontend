@@ -16,6 +16,9 @@ const Hoi = props => {
             <p>
                 <Link to="/acties">Acties pagina</Link>
             </p>
+            <p>
+                <Link to="/overzicht">Overzicht pagina</Link>
+            </p>
 
         </div>
     )
