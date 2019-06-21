@@ -1,0 +1,45 @@
+.modalWrapper {
+    background: white;
+    border: 1px solid #d0cccc;
+    box-shadow: 0 5px 8px 0 rgba(0,0,0,0.2), 0 7px 20px 0 rgba(0,0,0,0.17);
+    margin: 100px auto 0;
+    transition: all .8s;
+    width: 60%;
+}
+
+.modalBody {
+    padding: 10px 15px;
+}
+
+.modalFooter {
+    background: #263238;
+    height: 35px;
+    padding: 15px;
+}
+
+.modalBackground {
+    background-color: rgba(48, 49, 48, 0.42);
+    height: 100%;
+    position: fixed;
+    width: 100%;
+}
+
+.cancelButton, .confirmButton {
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    outline: none;
+    padding: 10px;
+    width: 50%;
+}
+
+.cancelButton {
+    background-color: #b71c1c;
+    float: left;
+}
+
+.confirmButton {
+    background-color: #1b5e20;
+    float: right;
+}
