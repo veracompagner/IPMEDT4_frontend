@@ -18,7 +18,7 @@ const Acties = props => (
     <div id="acties">
         <div id="header">
             {/* Back arrow */}
-            <Link to="/"><i className="material-icons arrow">arrow_back</i></Link>
+            <Link to="/"><i className="material-icons arrow icon-left-corner">arrow_back</i></Link>
 
             {/* Users current amount of points, when none are supplied defaults to 0 */}
             <p id="personalPoints" className="points">{props.user.points || 0} Punten</p>

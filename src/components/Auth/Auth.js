@@ -131,7 +131,7 @@ class Auth extends React.Component {
 
     render(){
         return(
-            <div>
+            <div id="auth">
                 <Switch>
                     <Route path="/auth/login" render={props => <Login {...props} loginUser={this.loginUser} />} />
                     <Route path="/auth/register" render={props => <Register {...props} registerUser={this.registerUser} />} />
