@@ -5,8 +5,10 @@
     width: 100%;
     padding: 16px;
     box-sizing: border-box;
-    background-color: white;
+    background-color: #FFC61E;
     border-radius: 5px;
+    margin-bottom: 16px;
+    color: $blue;
 
     box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
     transition: box-shadow 0.3s cubic-bezier(.25,.8,.25,1);
@@ -21,6 +23,8 @@
         margin: 0;
         margin-right: 16px;
         position: relative;
+        border: 6px solid $blue;
+        border-radius: 5px;
 
         img {
             position: absolute;
@@ -31,6 +35,7 @@
             max-width: 100%;
             max-height: 100%;
             margin: auto;
+            background-color: white;
         }
     }
 

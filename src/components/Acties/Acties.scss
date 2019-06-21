@@ -2,6 +2,7 @@
 
 #acties {
     padding: 16px;
+    padding-top: 65px;
 
     #personalPoints{
         float: right;
@@ -12,6 +13,26 @@
         font-weight: bold;
         margin-top: 0;
         font-size: 18px;
+        background: #FFC61E;
+        border-radius: 0 0 90px 90px;
+        position: fixed;
+        top: 0;
+        right: 16px;
+        padding: 10px 20px 10px 20px;
     }
 
+    .arrow{
+      margin-bottom: 16px;
+    }
+
+    #header{
+      width: 100%;
+      overflow-y: scroll;
+      padding: 16px 16px 10px 16px;
+      position: fixed;
+      left: 0;
+      top: 0;
+      background: linear-gradient(#FFF8E2 77%, rgba(255, 248, 226, 0) 101%);
+      z-index: 99;
+    }
 }
