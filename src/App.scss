@@ -19,3 +19,15 @@ body {
     background-color: $backgroundOrange;
     margin: 0;
 }
+
+
+
+.material-icons{
+    max-width: 1.3em;
+    margin: 10px 0px 0px 10px;
+    color: $blue;
+}
+
+.material-icons:hover{
+    color: $hoverblue;
+}
