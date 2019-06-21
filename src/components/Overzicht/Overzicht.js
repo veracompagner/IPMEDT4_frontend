@@ -33,13 +33,11 @@ class Overzicht extends React.Component {
                 <div className="overzicht-footer">
                     <Link to="/acties">
                         <Ripple
-                            icon="favorite"
                             name="Acties"
                         ></Ripple>
                     </Link>
                     <Link to="/auth/register">
                         <Ripple
-                            icon="location_on"
                             name="vertraging"
                         ></Ripple>
                     </Link>
