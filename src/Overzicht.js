@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link, Route, Switch} from "react-router-dom";
 import 'material-design-icons/iconfont/material-icons.css';
 import Cards from "./Cards"
 import Ripple from './Ripple'
@@ -6,6 +7,7 @@ import "./BottomNavigation.scss"
 import "./Overzicht.scss"
 import logoZonder from "./img/appLogoZonder.png";
 import smullers from "./img/smullers.jpeg";
+import Vertraging from './Vertraging';
 
 class Overzicht extends React.Component {
 	
@@ -26,17 +28,22 @@ class Overzicht extends React.Component {
         />
         </div>
         <div className="overzicht-footer">
-          <Ripple
-              icon="favorite"
-              name="Acties"
-          ></Ripple>
+            <Ripple
+                icon="favorite"
+                name="Acties"
+            ></Ripple>
+          <Link to="/vertraging">
           <Ripple
               icon="location_on"
               name="Vertraging"
           ></Ripple>
+          </Link>
         </div>
-        
+        <Switch>
+            <Route path='/vertraging' component={Vertraging}/>
+        </Switch>
       </div>
+      
     )
 
 

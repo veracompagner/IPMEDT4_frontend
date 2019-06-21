@@ -6,6 +6,7 @@ import axios from "axios";
 import Login from "./Login";
 import Register from "./Register";
 import Hoi from "./Hoi";
+import Overzicht from "./Overzicht"
 
 import "./App.scss";
 
