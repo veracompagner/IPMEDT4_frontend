@@ -1,9 +1,5 @@
 import React from "react";
 
-
-import "./Login.scss";
-
-
 const FormVertraging = ({vertraging}) => {
 
     let vertrekStation, aankomstStation, vertrekTijdDienstregeling, treinstelnummer;

@@ -11,6 +11,8 @@ import Hoi from "./components/Hoi/Hoi";
 import Auth from "./components/Auth/Auth";
 import Overzicht from "./components/Overzicht/Overzicht";
 import Acties from "./components/Acties/Acties";
+import Vertraging from "./components/Vertraging/Vertraging";
+import LoadingDots from "./components/LoadingDots";
 
 // Main functional component
 const App = props => {
@@ -33,6 +35,8 @@ const App = props => {
             <Route path="/auth" component={Auth} />
             <Route path="/overzicht" component={Overzicht} />
             <Route path="/acties" component={Acties} />
+            <Route path="/vertraging" component={Vertraging} />
+            <Route path="/dots" component={LoadingDots} />
         </Switch>
     )
 }
