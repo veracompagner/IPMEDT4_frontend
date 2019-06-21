@@ -36,7 +36,8 @@ class Auth extends React.Component {
                         name: json.data.user.name,
                         email: json.data.user.email,
                         auth_token: json.data.token,
-                        timestamp: new Date().toString()
+                        timestamp: new Date().toString(),
+                        points: json.data.user.points
                     }
                 };
                 // save app state with user date in local storage
