@@ -19,3 +19,15 @@ body {
     background-color: $backgroundOrange;
     margin: 0;
 }
+
+
+
+.icon-left-corner {
+    max-width: 1.3em;
+    margin: 10px;
+    color: $blue;
+}
+
+.icon-left-corner:hover {
+    color: $hoverblue;
+}

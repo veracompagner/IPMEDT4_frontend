@@ -15,7 +15,7 @@ import example from "../../img/exampleComp.jpg";
 const Acties = props => (
     <div id="acties">
         {/* Back arrow */}
-        <Link to="/"><i className="material-icons">arrow_back</i></Link>
+        <Link to="/"><i className="material-icons icon-left-corner">arrow_back</i></Link>
 
         {/* Users current amount of points, when none are supplied defaults to 0 */}
         <p id="personalPoints" className="points">{props.punten || 0} Punten</p>

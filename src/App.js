@@ -7,7 +7,6 @@ import { connect } from "react-redux";
 import "./App.scss";
 
 // Import Components used in main routes
-import Hoi from "./components/Hoi/Hoi";
 import Auth from "./components/Auth/Auth";
 import Overzicht from "./components/Overzicht/Overzicht";
 import Acties from "./components/Acties/Acties";
@@ -31,9 +30,9 @@ const App = props => {
     // Return Switch with all main routes
     return (
         <Switch>
-            <Route exact path='/' component={Hoi} />} />
+            <Route exact path='/' component={Overzicht} />} />
             <Route path="/auth" component={Auth} />
-            <Route path="/overzicht" component={Overzicht} />
+            {/*<Route path="/overzicht" component={Overzicht} />*/}
             <Route path="/acties" component={Acties} />
             <Route path="/vertraging" component={Vertraging} />
             <Route path="/dots" component={LoadingDots} />
