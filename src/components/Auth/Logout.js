@@ -1,12 +1,21 @@
 import React from "react";
 
-const Logout = ({ logoutUser }) => {
+import "./Logout.scss";
+
+import logoutimg from "../../img/logout.png";
+
+
+const Logout = ({logoutUser}) => {
+    function handleLogout(e){
+        e.preventDefault();
+        logoutUser();
+    }
 
     return (
         <div id="logout">
-            {logoutUser()}
+            <img className="logoutimg" onClick={handleLogout} src={logoutimg} alt="uitloggen"/>
         </div>
     );
-}
+};
 
 export default Logout;
