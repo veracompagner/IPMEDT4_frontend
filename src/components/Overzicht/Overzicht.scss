@@ -15,7 +15,7 @@ body {
     align-items: center;
 }
 
-.overzicht-punten-img{
+.overzicht-punten-img {
     min-width: 350px;
     width: 350px;
     &:hover{
@@ -25,13 +25,14 @@ body {
 
 @keyframes grow
 {
-    from{
+    from {
         transform: scale(1)
     }
-    to{
+    to {
         transform: scale(1.05);
     }
 }
+
 .overzicht-punten-text {
     position: absolute;
     font-size: 4em;
@@ -43,8 +44,6 @@ body {
     left: 50%;
     top: 220px;
     transform: translate(-50%, -50%)
-
-
 }
 
 .overzicht-cards {
