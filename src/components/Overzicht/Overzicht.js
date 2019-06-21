@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 import Card from "../Card"
 import Ripple from './Ripple'
 
-import 'material-design-icons/iconfont/material-icons.css';
 import "./Overzicht.scss"
 
 import logoZonder from "../../img/appLogoZonder.png";
@@ -16,7 +15,7 @@ class Overzicht extends React.Component {
         return(
             <div >
                 <Link to="/auth/logout">
-                    <i className="material-icons">power_settings_new</i>
+                    <i className="material-icons icon-left-corner">power_settings_new</i>
                 </Link>
                 <div className="overzicht-punten-root">
                     <img className="overzicht-punten-img" src={logoZonder} alt="appLogo"></img>
