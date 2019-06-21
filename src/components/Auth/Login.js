@@ -36,7 +36,7 @@ const Login = ({loginUser}) => {
                 />
                 <div className="splitbox">
                     {/*Register link*/}
-                    <Link to="/register">
+                    <Link to="/auth/register">
                         Registreren
                     </Link>
                     {/* submit button */}
