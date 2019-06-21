@@ -1,16 +1,21 @@
+@import "../../constants/constants";
+
 #login, #register {
     padding: 15px;
+    background-color: $orange;
+    height: 100%;
 
     .logoImg {
         margin: 0 auto;
-        max-width: 30%;
+        width: 60%;
+        max-width: 300px;
         display: block;
     }
-    
+
     form {
         display: block;
         margin: 0 auto;
-        max-width: 800px;
+        max-width: 600px;
     }
 
     input {
@@ -20,45 +25,45 @@
         font-size: 1.2rem;
         border-radius: 0.5em;
         border: none;
-        box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
+        box-shadow: $boxshadow;
     }
 
     ::placeholder {
         color: rgb(116, 116, 150);
     }
-    
+
     .splitbox {
         margin-top: 15px;
         display: flex;
         justify-content: flex-end;
         align-items: center;
     }
-    
+
     button {
         font-size: 1.5em;
         padding: 15px;
-        width: 20%;
+        min-width: 30%;
         color: white;
-        background-color: #00337f;
+        background-color: $blue;
         border-radius: 0.5rem;
         border: none;
-        box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
+        box-shadow: $boxshadow;
 
         &:hover {
-            background-color: #009cde;
+            background-color: $hoverblue;
         cursor: pointer;
         }
     }
-    
+
     a {
         display: block;
         padding: 15px;
         font-size: 1.3rem;
-        color: #00337f;
+        color: $blue;
         border:none;
 
         &:hover {
-            color: #009cde;
+            color: $hoverblue;
         }
 
     }

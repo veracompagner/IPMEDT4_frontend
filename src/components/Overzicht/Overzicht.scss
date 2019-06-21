@@ -1,0 +1,62 @@
+@import "../../constants/constants";
+
+.bottomBar{
+    margin: 0 auto;
+    width: 100px;
+}
+
+body {
+    background-color: $backgroundOrange;
+}
+
+.overzicht-punten-root {
+    width: 100%;
+}
+
+.overzicht-punten-img{
+    max-width: 60%;
+    display: flex;
+    margin-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    &:hover{
+        animation: grow 1.5s linear;
+    }
+}
+
+@keyframes grow
+{
+    from{
+        transform: scale(1)
+    }
+    to{
+        transform: scale(1.05);
+    }
+}
+
+.overzicht-punten-text {
+    font-size: 35px;
+    margin: auto;
+    text-align: center;
+    font-weight: bold;
+    white-space: pre-line;
+    color: $blue;
+    z-index: 10;
+    position: absolute;
+    left: 50%;
+    margin-left: -50px;
+    top: 100px;
+}
+
+.overzicht-cards {
+    margin-top: 30px;
+    margin: 1em;
+}
+
+.overzicht-footer {
+    overflow: hidden;
+    background-color: #333;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}

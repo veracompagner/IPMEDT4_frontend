@@ -1,6 +1,12 @@
+@import "constants/constants";
+
 * {
     box-sizing: border-box;
     font-family: sans-serif;
+}
+
+body > #root > div {
+    height: 100vh;
 }
 
 html {
@@ -8,8 +14,8 @@ html {
     height: 100%;
 }
 
-body{
+body {
     @extend html;
-    background-color: #ffc61e;
+    background-color: $backgroundOrange;
     margin: 0;
 }
