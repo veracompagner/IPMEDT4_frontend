@@ -35,7 +35,7 @@ class Overzicht extends React.Component {
                             name="Acties"
                         ></Ripple>
                     </Link>
-                    <Link to="/auth/register">
+                    <Link to="/vertraging">
                         <Ripple
                             name="vertraging"
                         ></Ripple>

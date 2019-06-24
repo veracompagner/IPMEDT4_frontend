@@ -20,6 +20,12 @@ const Hoi = props => (
         <p>
             <Link to="/overzicht">Overzicht pagina</Link>
         </p>
+        <p>
+            <Link to="/vertraging">Vetraging pagina</Link>
+        </p>
+        <p>
+            <Link to="/dots">loadingdots</Link>
+        </p>
 
     </div>
 )
