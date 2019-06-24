@@ -23,11 +23,14 @@ class Acties extends React.Component {
 
     constructor() {
         super();
-        this.retrieveProducts();
 
         this.state = {
             isShowing: false
         }
+    }
+
+    componentWillMount = () => {
+        this.retrieveProducts();
     }
 
     openModalHandler = (value) => {
