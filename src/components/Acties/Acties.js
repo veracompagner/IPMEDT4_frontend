@@ -70,7 +70,7 @@ class Acties extends React.Component {
 
     retrieveProducts = () => {
         axios
-        .get(APIURL + "/acties", {headers: {Authorization: `Bearer ${this.props.user.auth_token}`}})
+        .get(APIURL + "/products", {headers: {Authorization: `Bearer ${this.props.user.auth_token}`}})
         .then(json => {
             if (json.data.products) {
                 // save products data in local storage
