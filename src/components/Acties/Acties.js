@@ -1,7 +1,10 @@
 // Import React and the Link component from React-Router
 import React from "react";
+import axios from "axios";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+
+import { APIURL } from "../../constants/constants";
 
 // Import SCSS
 import "./Acties.scss";
@@ -15,9 +18,6 @@ import Modal from "../Modal/Modal";
 // Import Images
 import example from  "../../img/default.png";
 
-//Test elements till the products prop has been made;
-const elements = ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten'];
-
 // Define class component
 class Acties extends React.Component {
 
@@ -27,6 +27,10 @@ class Acties extends React.Component {
         this.state = {
             isShowing: false
         }
+    }
+
+    componentWillMount = () => {
+        this.retrieveProducts();
     }
 
     openModalHandler = (value) => {
@@ -54,8 +58,8 @@ class Acties extends React.Component {
                 </div>
 
                 {/* Company image + exchangeable product name + company name + needed amount of points */}
-                {elements.map((value, index) => {
-                return <Card onClick={() => {this.openModalHandler(value)}} img={example} title={value} text="GRATIS Product" points="5000" key={index}/>
+                {JSON.parse(localStorage["products"]).map((product, index) => {
+                    return <Card onClick={() => {this.openModalHandler(product.product)}} img={example} title={product.product} text={product.product} points={product.cost} key={product.id}/>
                 })}
 
                 {/* Modal */}
@@ -66,6 +70,20 @@ class Acties extends React.Component {
             </div>
         )
     }
+
+    retrieveProducts = () => {
+        axios
+        .get(APIURL + "/products", {headers: {Authorization: `Bearer ${this.props.user.auth_token}`}})
+        .then(json => {
+            if (json.data.products) {
+                // save products data in local storage
+                localStorage["products"] = JSON.stringify(json.data.products);
+            } else console.log("Retrieving products failed!");
+        })
+        .catch(error => {
+            console.log("Er is iets mis gegaan");
+        });
+    };
 }
 
 const mapStateToProps = state => {
