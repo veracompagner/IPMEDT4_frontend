@@ -3,7 +3,7 @@ import React from 'react'
 import "./Card.scss";
 
 const Card = props => (
-    <div className="card">
+    <div className="card" onClick={props.onClick || null}>
         <figure>
             <img src={props.img} alt="(Company name) Logo"></img>
         </figure>

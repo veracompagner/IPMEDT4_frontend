@@ -6,13 +6,14 @@ import './Modal.scss';
 
 const modal = (props) => {
     return (
-        <div>
-            <div className="modal"
-                style={{
-                    transform: props.show ? 'translateY(0vh)' : 'translateY(-200vh)',
-                }}>
+        <div onClick={props.close} className="modal"
+        style={{
+            transform: props.show ? 'translateY(0vh)' : 'translateY(-100vh)',
+            opacity: props.show ? '1' : '0'
+        }}>
+            <div className="modal-wrapper">
                 <div className="modal-body">
-                    <QRCode className="modal-qr" shape-rendering="crispEdges">{ "Hoi" || "QRCode" }</QRCode>
+                    <QRCode value={props.data || "undefined"} className="modal-qr" />
                 </div>
                 <div className="modal-footer">
                     <button className="modal-button modal-button-cancel" onClick={props.close}>CANCEL</button>

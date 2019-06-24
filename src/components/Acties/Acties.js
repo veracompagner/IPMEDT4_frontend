@@ -29,9 +29,10 @@ class Acties extends React.Component {
         }
     }
 
-    openModalHandler = () => {
+    openModalHandler = (value) => {
         this.setState({
-            isShowing: true
+            isShowing: true,
+            modalData: value
         });
     }
 
@@ -43,33 +44,25 @@ class Acties extends React.Component {
 
     render(){
         return(
-            <div id="acties">
-                <div id="header">
+            <div className="acties">
+                <div className="acties-header">
                     {/* Back arrow */}
-                    <Link to="/"><i className="material-icons arrow icon-left-corner">arrow_back</i></Link>
+                    <Link to="/"><i className="material-icons icon-left-corner">arrow_back</i></Link>
 
                     {/* Users current amount of points, when none are supplied defaults to 0 */}
-                    <p id="personalPoints" className="points">{this.props.user.points || 0} Punten</p>
-                </div>
-
-                {/* Company image + exchangeable product name + company name + needed amount of points */}
-                <div onClick={this.openModalHandler}>
-                    <Card img={example} title="Example Comp." text="GRATIS Product" points="5000" />
+                    <p className="acties-points">{this.props.user.points || 0} Punten</p>
                 </div>
 
                 {/* Company image + exchangeable product name + company name + needed amount of points */}
                 {elements.map((value, index) => {
-                return <Card img={example} title={value} text="GRATIS Product" points="5000" key={index}/>
+                return <Card onClick={() => {this.openModalHandler(value)}} img={example} title={value} text="GRATIS Product" points="5000" key={index}/>
                 })}
 
-                {/* modal */}
-                { this.state.isShowing ? <div onClick={this.closeModalHandler} className="modalBackground"></div> : null }
+                {/* Modal */}
                 <Modal
-                    className="modal"
                     show={this.state.isShowing}
-                    close={this.closeModalHandler}>
-                </Modal>
-
+                    close={this.closeModalHandler}
+                    data={this.state.modalData} />
             </div>
         )
     }
