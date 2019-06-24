@@ -16,7 +16,7 @@ import Card from "../Card";
 import Modal from "../Modal/Modal";
 
 // Import Images
-import example from  "../../img/default.png";
+import defaultImg from  "../../img/default.png";
 
 // Define class component
 class Acties extends React.Component {
@@ -25,7 +25,9 @@ class Acties extends React.Component {
         super();
 
         this.state = {
-            isShowing: false
+            isShowing: false,
+            modalData: null,
+            products: null
         }
     }
 
@@ -58,9 +60,9 @@ class Acties extends React.Component {
                 </div>
 
                 {/* Company image + exchangeable product name + company name + needed amount of points */}
-                {JSON.parse(localStorage["products"]).map((product, index) => {
-                    return <Card onClick={() => {this.openModalHandler(product.product)}} img={example} title={product.product} text={product.product} points={product.cost} key={product.id}/>
-                })}
+                {
+                    this.testFunctie(this.state.products)
+                }
 
                 {/* Modal */}
                 <Modal
@@ -72,18 +74,48 @@ class Acties extends React.Component {
     }
 
     retrieveProducts = () => {
-        axios
-        .get(APIURL + "/products", {headers: {Authorization: `Bearer ${this.props.user.auth_token}`}})
-        .then(json => {
-            if (json.data.products) {
-                // save products data in local storage
-                localStorage["products"] = JSON.stringify(json.data.products);
-            } else console.log("Retrieving products failed!");
-        })
-        .catch(error => {
-            console.log("Er is iets mis gegaan");
-        });
+        if(!localStorage["products"]) {
+            axios
+            .get(APIURL + "/products", {headers: {Authorization: `Bearer ${this.props.user.auth_token}`}})
+            .then(json => {
+                if (json.data) {
+                    // save products data in local storage
+                    localStorage["products"] = JSON.stringify(json.data);
+                    this.setState({
+                        products: json.data
+                    })
+                } else {
+                    console.log(json);
+                    console.log("Retrieving products failed!");
+                }
+            })
+            .catch(error => {
+                console.log(error.response);
+                console.log("Er is iets mis gegaan");
+            });
+        } else {
+            this.setState({
+                products: JSON.parse(localStorage["products"])
+            })
+        }
+
     };
+
+    testFunctie = products => {
+        if (products != null) {
+            console.log(products);
+            return products.map((product, index) => {
+                return <Card
+                    onClick={() => {this.openModalHandler(product.id)}}
+                    img={product.logo ? APIURL + "/products/" + product.logo : defaultImg}
+                    title={product.name}
+                    text={product.product}
+                    points={product.cost}
+                    key={product.id}
+                    />
+            })
+        }
+    }
 }
 
 const mapStateToProps = state => {
