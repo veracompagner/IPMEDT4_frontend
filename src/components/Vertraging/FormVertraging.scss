@@ -1,0 +1,56 @@
+@import "../../constants/constants";
+
+#FormVertraging-root{
+    color:$blue;
+    padding: 15px;
+    form{
+        display: block;
+        margin: 0 auto;
+        max-width: 600px;
+    }
+
+    input{
+        margin-top: 15px;
+        padding: 15px;
+        width: 100%;
+        font-size: 1.2rem;
+        border-radius: 0.5em;
+        border: none;
+        box-shadow: $boxshadow;
+    }
+
+    ::placeholder {
+        color: rgb(116, 116, 150);
+    }
+    button {
+        font-size: 1.5em;
+        margin-top: 15px;
+        padding: 15px;
+        min-width: 30%;
+        color: white;
+        background-color: $blue;
+        border-radius: 0.5rem;
+        border: none;
+        box-shadow: $boxshadow;
+
+        &:hover {
+            background-color: $hoverblue;
+            cursor: pointer;
+        }
+    }
+
+    a {
+        display: block;
+        padding: 15px;
+        font-size: 1.3rem;
+        color: $blue;
+        border:none;
+
+        &:hover {
+            color: $hoverblue;
+        }
+
+    }
+}
+
+

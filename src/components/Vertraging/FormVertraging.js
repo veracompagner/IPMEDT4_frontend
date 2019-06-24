@@ -1,4 +1,5 @@
 import React from "react";
+import './FormVertraging.scss';
 
 const FormVertraging = ({vertraging}) => {
 
