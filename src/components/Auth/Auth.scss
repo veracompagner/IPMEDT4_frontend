@@ -1,8 +1,12 @@
 @import "../../constants/constants";
 
+#auth {
+    background-color: $orange;
+}
+
 #login, #register {
     padding: 15px;
-    background-color: $orange;
+
 
     .logoImg {
         margin: 0 auto;

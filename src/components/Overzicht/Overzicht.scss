@@ -10,15 +10,15 @@ body {
 }
 
 .overzicht-punten-root {
-    width: 100%;
+    max-height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.overzicht-punten-img{
-    max-width: 60%;
-    display: flex;
-    margin-top: 30px;
-    margin-left: auto;
-    margin-right: auto;
+.overzicht-punten-img {
+    min-width: 250px;
+    width: 260px;
     &:hover{
         animation: grow 1.5s linear;
     }
@@ -26,31 +26,32 @@ body {
 
 @keyframes grow
 {
-    from{
+    from {
         transform: scale(1)
     }
-    to{
+    to {
         transform: scale(1.05);
     }
 }
 
 .overzicht-punten-text {
-    font-size: 35px;
+    position: absolute;
+    font-size: 4em;
     margin: auto;
     text-align: center;
     font-weight: bold;
-    white-space: pre-line;
     color: $blue;
     z-index: 10;
-    position: absolute;
     left: 50%;
-    margin-left: -50px;
-    top: 100px;
+    top: 180px;
+    transform: translate(-50%, -50%)
 }
 
 .overzicht-cards {
-    margin-top: 30px;
-    margin: 1em;
+    margin: 5em 1em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .overzicht-footer {
