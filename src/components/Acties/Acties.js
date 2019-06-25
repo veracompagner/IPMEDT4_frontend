@@ -1,7 +1,10 @@
 // Import React and the Link component from React-Router
 import React from "react";
+import axios from "axios";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+
+import { APIURL } from "../../constants/constants";
 
 // Import SCSS
 import "./Acties.scss";
@@ -9,31 +12,116 @@ import "./Acties.scss";
 // Import Card component
 import Card from "../Card";
 
+// Import Modal
+import Modal from "../Modal/Modal";
+
 // Import Images
-import example from  "../../img/default.png";
-//Test elements till the products prop has been made;
-const elements = ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten'];
-// Define functional component
-const Acties = props => (
-    <div id="acties">
-        <div id="header">
-            {/* Back arrow */}
-            <Link to="/"><i className="material-icons arrow icon-left-corner">arrow_back</i></Link>
+import defaultImg from  "../../img/default.png";
 
-            {/* Users current amount of points, when none are supplied defaults to 0 */}
-            <p id="personalPoints" className="points">{props.user.points || 0} Punten</p>
-        </div>
+// Define class component
+class Acties extends React.Component {
 
-        {/* Company image + exchangeable product name + company name + needed amount of points */}
-        {elements.map((value, index) => {
-          return <Card img={example} title={value} text="GRATIS Product" points="5000" key={index}/>
-        })}
-    </div>
-);
+    constructor() {
+        super();
+
+        this.state = {
+            isShowing: false,
+            modalData: null,
+            products: null
+        }
+    }
+
+    componentWillMount = () => {
+        this.retrieveProducts();
+    }
+
+    openModalHandler = (value) => {
+        this.setState({
+            isShowing: true,
+            modalData: value
+        });
+    }
+
+    closeModalHandler = () => {
+        this.setState({
+            isShowing: false
+        });
+    }
+
+    render(){
+        return(
+            <div className="acties">
+                <div className="acties-header">
+                    {/* Back arrow */}
+                    <Link to="/"><i className="material-icons icon-left-corner">arrow_back</i></Link>
+
+                    {/* Users current amount of points, when none are supplied defaults to 0 */}
+                    <p className="acties-points">{this.props.user.points || 0} Punten</p>
+                </div>
+
+                {/* Company image + exchangeable product name + company name + needed amount of points */}
+                {
+                    this.testFunctie(this.state.products)
+                }
+
+                {/* Modal */}
+                <Modal
+                    show={this.state.isShowing}
+                    close={this.closeModalHandler}
+                    data={this.state.modalData} />
+            </div>
+        )
+    }
+
+    retrieveProducts = () => {
+        if(!localStorage["products"]) {
+            axios
+            .get(APIURL + "/products", {headers: {Authorization: `Bearer ${this.props.token}`}})
+            .then(json => {
+                if (json.data) {
+                    // save products data in local storage
+                    localStorage["products"] = JSON.stringify(json.data);
+                    this.setState({
+                        products: json.data
+                    })
+                } else {
+                    console.log(json);
+                    console.log("Retrieving products failed!");
+                }
+            })
+            .catch(error => {
+                console.log(error.response);
+                console.log("Er is iets mis gegaan");
+            });
+        } else {
+            this.setState({
+                products: JSON.parse(localStorage["products"])
+            })
+        }
+
+    };
+
+    testFunctie = products => {
+        if (products != null) {
+            console.log(products);
+            return products.map((product, index) => {
+                return <Card
+                    onClick={() => {this.openModalHandler(product.id)}}
+                    img={product.company.logo ? APIURL + "/products/" + product.company.logo : defaultImg}
+                    title={product.company.name}
+                    text={product.product}
+                    points={product.cost}
+                    key={product.id}
+                    />
+            })
+        }
+    }
+}
 
 const mapStateToProps = state => {
     return {
-        user: state.user
+        user: state.user,
+        token: state.token
     }
 }
 

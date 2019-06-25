@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link, BrowserRouter as Router}from "react-router-dom";
+import { Link } from "react-router-dom";
 import 'material-design-icons/iconfont/material-icons.css';
 import './Vertraging.scss';
 import FormVertraging from './FormVertraging';
