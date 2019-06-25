@@ -19,9 +19,11 @@ const FormVertraging = ({user}) => {
      **/
     const handleFormVertraging = event => {
         event.preventDefault();
+
         var formData = new FormData();
         formData.append("email", user.email);
         formData.append("trein", treinstelnummer.value);
+        
         vertragingRequest(formData);
     };
 
@@ -31,14 +33,15 @@ const FormVertraging = ({user}) => {
             url: APIURL + "/delay/",
             headers: {Authorization: `Bearer ${user.auth_token}`},
             data: formData
-        }).then(json =>{
+        })
+        .then(json => {
             if(json.data){
                 this.props.dispatch(changeUser(json.data));
             }
         })
-            .catch(error => {
-                console.log(error.response);
-            });
+        .catch(error => {
+            console.log(error.response);
+        });
     };
 
     return (
