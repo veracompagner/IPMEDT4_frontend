@@ -1,7 +1,14 @@
 import React from "react";
-import './FormVertraging.scss';
+import axios from "axios";
+import {connect} from "react-redux";
+import {changeUser} from "../../redux/actions";
 
-const FormVertraging = ({vertraging}) => {
+import './FormVertraging.scss';
+import {APIURL} from "../../constants/constants";
+
+
+
+const FormVertraging = ({user}) => {
 
     let vertrekStation, aankomstStation, vertrekTijdDienstregeling, treinstelnummer;
 
@@ -12,7 +19,29 @@ const FormVertraging = ({vertraging}) => {
      **/
     const handleFormVertraging = event => {
         event.preventDefault();
-        vertraging(vertrekStation.value, aankomstStation.value, vertrekTijdDienstregeling.value, treinstelnummer.value);
+
+        var formData = new FormData();
+        formData.append("email", user.email);
+        formData.append("trein", treinstelnummer.value);
+        
+        vertragingRequest(formData);
+    };
+
+    const vertragingRequest = formData => {
+        axios({
+            method: 'POST',
+            url: APIURL + "/delay/",
+            headers: {Authorization: `Bearer ${user.auth_token}`},
+            data: formData
+        })
+        .then(json => {
+            if(json.data){
+                this.props.dispatch(changeUser(json.data));
+            }
+        })
+        .catch(error => {
+            console.log(error.response);
+        });
     };
 
     return (
@@ -59,6 +88,12 @@ const FormVertraging = ({vertraging}) => {
             </form>
         </div>
     );
-}
+};
 
-export default FormVertraging;
+const mapStateToProps = state => {
+    return {
+        user: state.user
+    }
+};
+
+export default connect(mapStateToProps)(FormVertraging);
