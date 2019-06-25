@@ -8,7 +8,7 @@ import { APIURL } from "../../constants/constants";
 import Login from "./Login";
 import Register from "./Register";
 import Logout from "./Logout";
-import { changeIsLoggedIn, changeUser } from "../../redux/actions";
+import { changeIsLoggedIn, changeUser, changeToken } from "../../redux/actions";
 import Alert from "./Alert";
 
 class Auth extends React.Component {
@@ -25,21 +25,9 @@ class Auth extends React.Component {
         .post(APIURL + route, formData)
         .then(json => {
             if (json.data.token) {
-                let appState = {
-                    isLoggedIn: true,
-                    user: {
-                        id: json.data.user.id,
-                        name: json.data.user.name,
-                        email: json.data.user.email,
-                        auth_token: json.data.token,
-                        timestamp: new Date().toString(),
-                        points: json.data.user.points
-                    }
-                };
-                // save app state with user date in local storage
-                localStorage["appState"] = JSON.stringify(appState);
-                this.props.dispatch(changeIsLoggedIn(appState.isLoggedIn));
-                this.props.dispatch(changeUser(appState.user));
+                this.props.dispatch(changeIsLoggedIn(true));
+                this.props.dispatch(changeUser(json.data.user));
+                this.props.dispatch(changeToken(json.data.token));
                 this.setState({melding: null});
             } else console.log(route + " failed!");
         })
@@ -112,25 +100,10 @@ class Auth extends React.Component {
     };
 
     logoutUser = () => {
-        let appState = {
-            isLoggedIn: false,
-            user: {}
-        };
-        // save app state with user date in local storage
-        localStorage["appState"] = JSON.stringify(appState);
-        this.props.dispatch(changeIsLoggedIn(appState.isLoggedIn));
-        this.props.dispatch(changeUser(appState.user));
+        this.props.dispatch(changeIsLoggedIn(false));
+        this.props.dispatch(changeUser({}));
+        this.props.dispatch(changeToken(""));
     };
-
-    componentWillMount = () => {
-        let state = localStorage["appState"];
-        if (state) {
-            let appState = JSON.parse(state);
-
-            this.props.dispatch(changeIsLoggedIn(appState.isLoggedIn));
-            this.props.dispatch(changeUser(appState.user));
-        }
-    }
 
     render(){
         return(

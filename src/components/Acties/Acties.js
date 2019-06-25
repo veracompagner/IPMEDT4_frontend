@@ -76,7 +76,7 @@ class Acties extends React.Component {
     retrieveProducts = () => {
         if(!localStorage["products"]) {
             axios
-            .get(APIURL + "/products", {headers: {Authorization: `Bearer ${this.props.user.auth_token}`}})
+            .get(APIURL + "/products", {headers: {Authorization: `Bearer ${this.props.token}`}})
             .then(json => {
                 if (json.data) {
                     // save products data in local storage
@@ -120,7 +120,8 @@ class Acties extends React.Component {
 
 const mapStateToProps = state => {
     return {
-        user: state.user
+        user: state.user,
+        token: state.token
     }
 }
 
