@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 
 import Card from "../Card"
-import Ripple from './Ripple'
+import BottomBar from './BottomBar'
 
 import "./Overzicht.scss"
 
@@ -31,14 +31,18 @@ class Overzicht extends React.Component {
                 </div>
                 <div className="overzicht-footer">
                     <Link to="/acties">
-                        <Ripple
+                        <BottomBar
                             name="Acties"
-                        ></Ripple>
+                            icon="favorite"
+                            link="/acties"
+                        ></BottomBar>
                     </Link>
                     <Link to="/vertraging">
-                        <Ripple
+                        <BottomBar
                             name="vertraging"
-                        ></Ripple>
+                            icon="location_on"
+                            link
+                        ></BottomBar>
                     </Link>
                 </div>
             </div>
