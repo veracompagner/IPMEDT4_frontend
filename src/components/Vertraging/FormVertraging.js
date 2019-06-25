@@ -9,7 +9,7 @@ import {Link} from "react-router-dom";
 
 
 
-const FormVertraging = ({user, token, dispatch}) => {
+const FormVertraging = props => {
 
     let vertrekStation, aankomstStation, vertrekTijdDienstregeling, treinstelnummer;
 
@@ -22,7 +22,7 @@ const FormVertraging = ({user, token, dispatch}) => {
         event.preventDefault();
 
         var formData = new FormData();
-        formData.append("email", user.email);
+        formData.append("email", props.user.email);
         formData.append("trein", treinstelnummer.value);
         vertragingRequest(formData);
     };
@@ -30,14 +30,14 @@ const FormVertraging = ({user, token, dispatch}) => {
         axios({
             method: 'POST',
             url: APIURL + "/delay/",
-            headers: {Authorization: `Bearer ${token}`},
+            headers: {Authorization: `Bearer ${props.token}`},
             data: formData
         })
         .then(json => {
             console.log(json);
             console.log(json.data);
             if(json.data){
-                dispatch(changeUser(json.data));
+                props.dispatch(changeUser(json.data));
             }
         })
         .catch(error => {
