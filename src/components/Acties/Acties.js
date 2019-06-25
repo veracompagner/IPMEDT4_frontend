@@ -107,8 +107,8 @@ class Acties extends React.Component {
             return products.map((product, index) => {
                 return <Card
                     onClick={() => {this.openModalHandler(product.id)}}
-                    img={product.logo ? APIURL + "/products/" + product.logo : defaultImg}
-                    title={product.name}
+                    img={product.company.logo ? APIURL + "/products/" + product.company.logo : defaultImg}
+                    title={product.company.name}
                     text={product.product}
                     points={product.cost}
                     key={product.id}
