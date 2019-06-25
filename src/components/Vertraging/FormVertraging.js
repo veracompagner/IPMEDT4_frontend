@@ -8,7 +8,7 @@ import {APIURL} from "../../constants/constants";
 
 
 
-const FormVertraging = ({user}) => {
+const FormVertraging = ({user, token}) => {
 
     let vertrekStation, aankomstStation, vertrekTijdDienstregeling, treinstelnummer;
 
@@ -31,7 +31,7 @@ const FormVertraging = ({user}) => {
         axios({
             method: 'POST',
             url: APIURL + "/delay/",
-            headers: {Authorization: `Bearer ${user.auth_token}`},
+            headers: {Authorization: `Bearer ${token}`},
             data: formData
         })
         .then(json => {
@@ -40,6 +40,7 @@ const FormVertraging = ({user}) => {
             }
         })
         .catch(error => {
+            console.log(error);
             console.log(error.response);
         });
     };
@@ -92,7 +93,8 @@ const FormVertraging = ({user}) => {
 
 const mapStateToProps = state => {
     return {
-        user: state.user
+        user: state.user,
+        token: state.token
     }
 };
 
