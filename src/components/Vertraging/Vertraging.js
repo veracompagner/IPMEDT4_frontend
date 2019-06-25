@@ -21,13 +21,4 @@ const Vertraging = () => (
 </div>
 );
 
-
-
-
-
-
-
-
-
-
 export default Vertraging;
