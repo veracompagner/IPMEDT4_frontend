@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
 import Card from "../Card"
-import Ripple from './Ripple'
+import BottomBar from './BottomBar'
 
 import "./Overzicht.scss"
 
@@ -29,16 +29,18 @@ const Overzicht = props => (
         </div>
         <div className="overzicht-footer">
             <Link to="/acties">
-                <Ripple
+                <BottomBar
                     name="Acties"
                     icon="favorite"
-                ></Ripple>
+                    link="/acties"
+                ></BottomBar>
             </Link>
             <Link to="/vertraging">
-                <Ripple
+                <BottomBar
                     name="vertraging"
                     icon="location_on"
-                ></Ripple>
+                    link
+                ></BottomBar>
             </Link>
         </div>
     </div>
