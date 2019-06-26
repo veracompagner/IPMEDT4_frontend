@@ -5,7 +5,7 @@ import {changeUser} from "../../redux/actions";
 
 import './FormVertraging.scss';
 import {APIURL} from "../../constants/constants";
-import {Link} from "react-router-dom";
+import {withRouter} from "react-router-dom";
 
 
 
@@ -38,6 +38,7 @@ const FormVertraging = props => {
             console.log(json.data);
             if(json.data){
                 props.dispatch(changeUser(json.data));
+                props.history.push('/');
             }
         })
         .catch(error => {
@@ -99,4 +100,4 @@ const mapStateToProps = state => {
     }
 };
 
-export default connect(mapStateToProps)(FormVertraging);
+export default connect(mapStateToProps)(withRouter(FormVertraging));
