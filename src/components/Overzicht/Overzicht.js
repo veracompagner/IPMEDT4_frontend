@@ -27,7 +27,7 @@ const Overzicht = props => (
                         onClick={() => {openModal("Hoi")}}
                         title="Gratis Snack"
                         text="Smullers"
-                        points="2000"
+                        points="200"
                         img={smullers}
                     />
                 </div>
@@ -41,7 +41,7 @@ const Overzicht = props => (
                     </Link>
                     <Link to="/vertraging">
                         <BottomBar
-                            name="vertraging"
+                            name="Vertraging"
                             icon="location_on"
                             link
                         ></BottomBar>
