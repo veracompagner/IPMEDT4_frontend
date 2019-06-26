@@ -5,12 +5,11 @@ import {changeUser} from "../../redux/actions";
 
 import './FormVertraging.scss';
 import {APIURL} from "../../constants/constants";
-import {Link} from "react-router-dom";
+import {withRouter} from "react-router-dom";
 
 
 
-const FormVertraging = ({user, token, dispatch}) => {
-
+const FormVertraging = ({user, token, dispatch, history}) => {
     let vertrekStation, aankomstStation, vertrekTijdDienstregeling, treinstelnummer;
 
     /**
@@ -38,6 +37,7 @@ const FormVertraging = ({user, token, dispatch}) => {
             console.log(json.data);
             if(json.data){
                 dispatch(changeUser(json.data));
+                history.push('/');
             }
         })
         .catch(error => {
@@ -99,4 +99,4 @@ const mapStateToProps = state => {
     }
 };
 
-export default connect(mapStateToProps)(FormVertraging);
+export default connect(mapStateToProps)(withRouter(FormVertraging));
