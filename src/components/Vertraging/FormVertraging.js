@@ -25,12 +25,13 @@ const FormVertraging = props => {
         var formData = new FormData();
         formData.append("email", props.user.email);
         formData.append("trein", treinstelnummer.value);
+        formData.append("station", vertrekStation.value);
         vertragingRequest(formData);
     };
     const vertragingRequest = formData => {
         axios({
             method: 'POST',
-            url: APIURL + "/delay/",
+            url: APIURL + "/delay",
             headers: {Authorization: `Bearer ${props.token}`},
             data: formData
         })
@@ -56,10 +57,10 @@ const FormVertraging = props => {
                 {/* input aankomststation */}
                 <select ref={(input) => vertrekStation = input} required>
                     <option selected value="Geen">Geen station geselecteerd</option>
-                    <option value="Alphen">Alphen aan den Rijn</option>
+                    <option value="Haag">Den Haag</option>
+                    <option value="Rotterdam">Rotterdam</option>
                     <option value="Leiden">Leiden</option>
-                    <option value="Utrecht">Utrecht</option>
-                    <option value="Amsterdam">Amsterdam</option>
+                    <option value="Alphen">Alphen aan den Rijn</option>
                 </select>
 
                 {/* input vertrek */}
