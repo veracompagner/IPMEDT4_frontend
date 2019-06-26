@@ -9,7 +9,8 @@ import {withRouter} from "react-router-dom";
 
 
 
-const FormVertraging = ({user, token, dispatch, history}) => {
+const FormVertraging = props => {
+
     let vertrekStation, aankomstStation, vertrekTijdDienstregeling, treinstelnummer;
 
     /**
@@ -21,7 +22,7 @@ const FormVertraging = ({user, token, dispatch, history}) => {
         event.preventDefault();
 
         var formData = new FormData();
-        formData.append("email", user.email);
+        formData.append("email", props.user.email);
         formData.append("trein", treinstelnummer.value);
         vertragingRequest(formData);
     };
@@ -29,15 +30,15 @@ const FormVertraging = ({user, token, dispatch, history}) => {
         axios({
             method: 'POST',
             url: APIURL + "/delay/",
-            headers: {Authorization: `Bearer ${token}`},
+            headers: {Authorization: `Bearer ${props.token}`},
             data: formData
         })
         .then(json => {
             console.log(json);
             console.log(json.data);
             if(json.data){
-                dispatch(changeUser(json.data));
-                history.push('/');
+                props.dispatch(changeUser(json.data));
+                props.history.push('/');
             }
         })
         .catch(error => {
