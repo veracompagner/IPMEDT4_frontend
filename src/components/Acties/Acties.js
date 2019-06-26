@@ -48,7 +48,7 @@ class Acties extends React.Component {
 
                         {/* Company image + exchangeable product name + company name + needed amount of points */}
                         {
-                            this.testFunctie(this.state.products, openModal)
+                            this.generateCards(this.state.products, openModal)
                         }
 
                         {/* Modal */}
@@ -90,18 +90,18 @@ class Acties extends React.Component {
 
     };
 
-    testFunctie = (products, openModal) => {
+    generateCards = (products, openModal) => {
         if (products != null) {
-            console.log(products);
             return products.map((product, index) => {
                 return <Card
-                    onClick={() => {openModal(product.product)}}
+                    onClick={() => {openModal(product)}}
                     img={product.company.logo ? APIURL + "/products/" + product.company.logo : defaultImg}
                     title={product.company.name}
                     text={product.product}
                     points={product.cost}
                     key={product.id}
                     />
+
             })
         }
     }
