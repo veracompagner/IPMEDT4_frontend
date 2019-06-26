@@ -13,6 +13,7 @@ const FormVertraging = props => {
 
     let vertrekStation, aankomstStation, vertrekTijdDienstregeling, treinstelnummer;
 
+
     /**
      * @func handleFormVertraging
      * @param event
@@ -49,22 +50,26 @@ const FormVertraging = props => {
 
     return (
         <div id="FormVertraging-root">
-            <form onSubmit={handleFormVertraging} action="" method="post">
-                {/* input vertrekstation */}
-                <input
-                    ref={input => (vertrekStation = input)}
-                    name="Vertrekstation"
-                    type="text"
-                    placeholder="Vertrekstation"
-                />
 
+
+            <form onSubmit={handleFormVertraging} action="" method="post">
                 {/* input aankomststation */}
-                <input
-                    ref={input => (aankomstStation = input)}
-                    name="Aankomst_station"
-                    type="text"
-                    placeholder="Aankomststation"
-                />
+                <select ref={(input) => vertrekStation = input} required>
+                    <option selected value="Geen">Geen station geselecteerd</option>
+                    <option value="Alphen">Alphen aan den Rijn</option>
+                    <option value="Leiden">Leiden</option>
+                    <option value="Utrecht">Utrecht</option>
+                    <option value="Amsterdam">Amsterdam</option>
+                </select>
+
+                {/* input vertrek */}
+                <select ref={(input) => aankomstStation = input} required>
+                    <option selected value="Geen">Geen station geselecteerd</option>
+                    <option value="Alphen">Alphen aan den Rijn</option>
+                    <option value="Leiden">Leiden</option>
+                    <option value="Utrecht">Utrecht</option>
+                    <option value="Amsterdam">Amsterdam</option>
+                </select>
 
 
                 {/* input vertrektijd volgens dienstregeling */}

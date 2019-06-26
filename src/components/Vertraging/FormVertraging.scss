@@ -9,7 +9,7 @@
         max-width: 600px;
     }
 
-    input{
+    input, select{
         margin-top: 15px;
         padding: 15px;
         width: 100%;
@@ -17,6 +17,11 @@
         border-radius: 0.5em;
         border: none;
         box-shadow: $boxshadow;
+    }
+    select {
+        -moz-appearance:none; /* Firefox */
+        -webkit-appearance:none; /* Safari and Chrome */
+        appearance:none;
     }
 
     ::placeholder {

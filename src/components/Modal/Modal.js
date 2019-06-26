@@ -47,8 +47,8 @@ const modal = (props) => {
                         <QRCode value={ props.data.product} className="modal-qr" />
                     </div>
                     <div className="modal-footer">
-                        <button className="modal-button modal-button-cancel" onClick={props.close}>CANCEL</button>
-                        <button className="modal-button modal-button-confirm" onClick={handleConfirm}>CONFIRM</button>
+                        <button className="modal-button modal-button-cancel" onClick={props.close}>Cancel</button>
+                        <button className="modal-button modal-button-confirm" onClick={handleConfirm}>Confirm</button>
                     </div>
                 </div>
             </div>

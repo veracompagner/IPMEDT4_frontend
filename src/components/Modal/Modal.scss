@@ -14,8 +14,9 @@
     align-items: center;
 
     &-wrapper {
-        background: $blue;
-        border: 1px solid $orange;
+        background: white;
+        border: 3px solid $blue;
+        border-radius: 5px;
         box-shadow: 0 5px 8px 0 rgba(0,0,0,0.2), 0 7px 20px 0 rgba(0,0,0,0.17);
         transition: transform .8s;
         z-index: 3;
@@ -23,7 +24,6 @@
 
     &-body {
         padding: 1em;
-
     }
 
     &-qr {
@@ -44,6 +44,7 @@
         color: $blue;
         cursor: pointer;
         font-weight: bold;
+        font-size: 1.6em;
         outline: none;
         padding: 20px;
         flex: 1 1 auto;
