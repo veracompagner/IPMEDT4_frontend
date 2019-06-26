@@ -21,7 +21,7 @@ const modal = (props) => {
         const subtractRequest = formData => {
             axios({
                 method: 'POST',
-                url: APIURL + "/products/",
+                url: APIURL + "/products",
                 headers: {Authorization: `Bearer ${props.token}`},
                 data: formData
             })

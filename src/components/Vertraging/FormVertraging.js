@@ -31,7 +31,7 @@ const FormVertraging = props => {
     const vertragingRequest = formData => {
         axios({
             method: 'POST',
-            url: APIURL + "/delay/",
+            url: APIURL + "/delay",
             headers: {Authorization: `Bearer ${props.token}`},
             data: formData
         })
