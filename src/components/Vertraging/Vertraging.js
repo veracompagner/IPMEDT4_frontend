@@ -7,18 +7,13 @@ import FormVertraging from './FormVertraging';
 
 const Vertraging = () => (
     <div>
-    <div className="Vetraging-header">
         {/* Back arrow */}
-        <Link to="/"><i className="material-icons">arrow_back</i></Link>
+        <Link to="/"><i className="material-icons icon-left-corner">arrow_back</i></Link>
+        <div className="Vertraging-body">
+            <h2>Vertraging Melden</h2>
+            <FormVertraging />
+        </div>
     </div>
-
-    <div className="Vertraging-body">
-        <h2>Vertraging Melden</h2>
-        <FormVertraging />
-    </div>
-
-
-</div>
 );
 
 export default Vertraging;
