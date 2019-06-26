@@ -1,3 +1,5 @@
+@import "../../constants/constants";
+
 .modal {
     background-color: rgba(48, 49, 48, 0.42);
     position: fixed;
@@ -12,8 +14,8 @@
     align-items: center;
 
     &-wrapper {
-        background: white;
-        border: 1px solid #d0cccc;
+        background: $blue;
+        border: 1px solid $orange;
         box-shadow: 0 5px 8px 0 rgba(0,0,0,0.2), 0 7px 20px 0 rgba(0,0,0,0.17);
         transition: transform .8s;
         z-index: 3;
@@ -29,7 +31,7 @@
     }
 
     &-footer {
-        background: #263238;
+        background: $blue;
         display: flex;
         justify-content: stretch;
         width: 100%;
@@ -37,20 +39,27 @@
     }
 
     &-button {
+        margin: auto 2px auto 2px;
         border: none;
-        color: white;
+        color: $blue;
         cursor: pointer;
         font-weight: bold;
         outline: none;
-        padding: 10px;
+        padding: 20px;
         flex: 1 1 auto;
+        border-radius: 5px;
 
         &-cancel {
-            background-color: #b71c1c;
+            background-color: $orange;
         }
 
         &-confirm {
-            background-color: #1b5e20;
+            background-color: $orange;
         }
+
+
+    }
+    &-button:hover{
+        box-shadow: 0 8px 8px rgba(0,0,0,0.25), 0 8px 8px rgba(0,0,0,0.22);
     }
 }
