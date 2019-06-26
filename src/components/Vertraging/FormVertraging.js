@@ -54,16 +54,18 @@ const FormVertraging = props => {
 
             <form onSubmit={handleFormVertraging} action="" method="post">
                 {/* input aankomststation */}
-                <select ref={(input) => aankomstStation = input} required>
-                    <option selected value="Alphen">Alphen aan den Rijn</option>
+                <select ref={(input) => vertrekStation = input} required>
+                    <option selected value="Geen">Geen station geselecteerd</option>
+                    <option value="Alphen">Alphen aan den Rijn</option>
                     <option value="Leiden">Leiden</option>
                     <option value="Utrecht">Utrecht</option>
                     <option value="Amsterdam">Amsterdam</option>
                 </select>
 
                 {/* input vertrek */}
-                <select ref={(input) => vertrekStation = input} required>
-                    <option selected value="Alphen">Alphen aan den Rijn</option>
+                <select ref={(input) => aankomstStation = input} required>
+                    <option selected value="Geen">Geen station geselecteerd</option>
+                    <option value="Alphen">Alphen aan den Rijn</option>
                     <option value="Leiden">Leiden</option>
                     <option value="Utrecht">Utrecht</option>
                     <option value="Amsterdam">Amsterdam</option>
