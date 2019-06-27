@@ -26,6 +26,8 @@ const FormVertraging = props => {
         formData.append("email", props.user.email);
         formData.append("trein", treinstelnummer.value);
         formData.append("station", vertrekStation.value);
+        formData.append("aankomststation", aankomstStation.value);
+        formData.append("vertrektijd", vertrekTijdDienstregeling.value);
         vertragingRequest(formData);
     };
     const vertragingRequest = formData => {
