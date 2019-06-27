@@ -1,19 +1,17 @@
+// Import scss constants
 @import "../../constants/constants";
 
-#auth {
+.auth {
     background-color: $orange;
     height: 100% !important;
+    margin: 0 15px;
 
-    .logoImg {
+    &-logo {
         margin: 0 auto;
         width: 60%;
         max-width: 300px;
         display: block;
     }
-}
-
-#login, #register {
-    margin: 0 15px;
 
     form {
         display: block;
@@ -77,6 +75,5 @@
         &:hover {
             color: $hoverblue;
         }
-
     }
 }

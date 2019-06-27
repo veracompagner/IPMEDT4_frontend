@@ -1,13 +1,16 @@
+// Import react and react-router components
 import React from "react";
 import { Link } from "react-router-dom";
 
-import "./Auth.scss";
-
+// Import spinner
 import Spinner from "../Spinner";
 
+// Login functional component
 const Login = props => {
 
+    // Initiate vars for form
     let email, password;
+
     /**
      * @func handleLogin
      * @param event
@@ -17,9 +20,9 @@ const Login = props => {
         event.preventDefault();
         props.loginUser(email.value, password.value);
     };
-    return (
-        <div id="login">
 
+    return (
+        <div>
             <form onSubmit={handleLogin} action="" method="post">
                 {/* input username */}
                 <input
@@ -28,6 +31,7 @@ const Login = props => {
                     type="text"
                     placeholder="E-mailadres"
                 />
+
                 {/* input password */}
                 <input
                     ref={input => (password = input)}
@@ -35,8 +39,9 @@ const Login = props => {
                     type="password"
                     placeholder="Wachtwoord"
                 />
+
                 <div className="splitbox">
-                    {/*Register link*/}
+                    {/* Register link */}
                     <Link to="/auth/register">
                         Registreren
                     </Link>
@@ -48,7 +53,6 @@ const Login = props => {
             </form>
         </div>
     );
-
 }
 
 export default Login;

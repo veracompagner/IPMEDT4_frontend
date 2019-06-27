@@ -1,12 +1,14 @@
+// Import react and react-router components
 import React from "react";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
-import "./Auth.scss";
-
+// Import spinner
 import Spinner from "../Spinner";
 
+// Register functional component
 const Register = props => {
 
+    // Initiate vars for form
     let email, password, name, password_confirmation;
 
     /**
@@ -20,7 +22,7 @@ const Register = props => {
     };
 
     return (
-        <div id="register">
+        <div>
             <form onSubmit={handleRegister} action="" method="post">
                 {/* input username */}
                 <input
@@ -30,14 +32,13 @@ const Register = props => {
                     placeholder="Gebruikersnaam"
                 />
 
-                {/* input mail */}
+                {/* input email */}
                 <input
                     ref={input => (email = input)}
                     name="email"
                     type="text"
                     placeholder="E-mailadres"
                 />
-
 
                 {/* input password */}
                 <input
@@ -47,6 +48,7 @@ const Register = props => {
                     placeholder="Wachtwoord"
                 />
 
+                {/* input confirmation */}
                 <input
                     ref={input => (password_confirmation = input)}
                     name="password_confirmation"
@@ -55,7 +57,7 @@ const Register = props => {
                 />
 
                 <div className="splitbox">
-                    {/*Inlog link*/}
+                    {/* Inlog link */}
                     <Link to="/">
                         Inloggen
                     </Link>
