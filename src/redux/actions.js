@@ -1,6 +1,7 @@
 export const CHANGE_ISLOGGEDIN = "CHANGE_ISLOGGEDIN";
 export const CHANGE_USER = "CHANGE_USER";
 export const CHANGE_TOKEN = "CHANGE_TOKEN";
+export const CHANGE_PRODUCTS = "CHANGE_PRODUCTS";
 
 export const changeIsLoggedIn = isLoggedIn => ({
     type: CHANGE_ISLOGGEDIN,
@@ -14,5 +15,10 @@ export const changeUser = user => ({
 
 export const changeToken = token => ({
     type: CHANGE_TOKEN,
+    payload: token
+});
+
+export const changeProducts = token => ({
+    type: CHANGE_PRODUCTS,
     payload: token
 });

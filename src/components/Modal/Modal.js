@@ -26,8 +26,12 @@ const modal = (props) => {
                 data: formData
             })
                 .then(json => {
-                    if(json.data){
+                    console.log(json);
+                    console.log(json.response);
+                    if(json.data.email){
                         props.dispatch(changeUser(json.data));
+                    } else {
+                        console.log("not a user object!");
                     }
                 })
                 .catch(error => {
@@ -44,7 +48,7 @@ const modal = (props) => {
                  }}>
                 <div className="modal-wrapper">
                     <div className="modal-body">
-                        <QRCode value={ props.data.product} className="modal-qr" />
+                        <QRCode value={props.data.product} className="modal-qr" />
                     </div>
                     <div className="modal-footer">
                         <button className="modal-button modal-button-cancel" onClick={props.close}>Cancel</button>

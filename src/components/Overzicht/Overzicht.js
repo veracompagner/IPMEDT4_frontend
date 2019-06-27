@@ -10,6 +10,7 @@ import "./Overzicht.scss"
 
 import logoZonder from "../../img/appLogoZonder.png";
 import smullers from "../../img/smullers.jpeg";
+import { APIURL } from "../../constants/constants";
 
 const Overzicht = props => (
     <ModalWrapper>
@@ -23,13 +24,22 @@ const Overzicht = props => (
                     <p className="overzicht-punten-tekst">{props.user.points}</p>
                 </div>
                 <div className="overzicht-cards">
+                    {props.products !== [] ?
                     <Card
-                        onClick={() => {openModal("Hoi")}}
+                        onClick={() => {openModal({product: "Gratis Snack"})}}
                         title="Gratis Snack"
                         text="Smullers"
                         points="200"
                         img={smullers}
-                    />
+                    /> :
+                    <Card
+                        onClick={() => {openModal(props.products[0])}}
+                        img={APIURL + "/products/" + props.products[0].company.logo}
+                        title={props.products[0].company.name}
+                        text={props.products[0].product}
+                        points={props.products[0].cost}
+                        key={props.products[0].id}
+                    /> }
                 </div>
                 <div className="overzicht-footer">
                     <Link to="/acties">
@@ -54,7 +64,8 @@ const Overzicht = props => (
 
 const mapStateToProps = state => {
     return {
-        user: state.user
+        user: state.user,
+        products: state.products
     }
 }
 
