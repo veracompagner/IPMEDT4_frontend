@@ -2,9 +2,10 @@ import React from "react";
 import {Link} from "react-router-dom";
 
 import "./Auth.scss";
-import logo from "../../img/appLogo.png";
 
-const Register = ({registerUser}) => {
+import Spinner from "../Spinner";
+
+const Register = props => {
 
     let email, password, name, password_confirmation;
 
@@ -15,12 +16,11 @@ const Register = ({registerUser}) => {
      **/
     const handleRegister = event => {
         event.preventDefault();
-        registerUser(name.value, email.value, password.value, password_confirmation.value);
+        props.registerUser(name.value, email.value, password.value, password_confirmation.value);
     };
 
     return (
         <div id="register">
-            <img className="logoImg" src={logo} alt="appLogo"></img>
             <form onSubmit={handleRegister} action="" method="post">
                 {/* input username */}
                 <input
@@ -60,8 +60,8 @@ const Register = ({registerUser}) => {
                         Inloggen
                     </Link>
                     {/* submit button */}
-                    <button type="submit">
-                        Registreer
+                    <button type="submit" disabled={props.loading}>
+                        {props.loading ? <Spinner size="22px" color={"white"}/> : "Registreer"}
                     </button>
                 </div>
             </form>

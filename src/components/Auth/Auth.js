@@ -11,24 +11,29 @@ import Logout from "./Logout";
 import { changeIsLoggedIn, changeUser, changeToken } from "../../redux/actions";
 import Alert from "./Alert";
 
+import logo from "../../img/appLogo.png";
+
 class Auth extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            melding: null
+            melding: null,
+            loading: false
         };
     }
 
     authUser = (route, formData) => {
+        this.setState({ loading: true });
         axios
         .post(APIURL + route, formData)
         .then(json => {
             if (json.data.token) {
-                this.props.dispatch(changeIsLoggedIn(true));
                 this.props.dispatch(changeUser(json.data.user));
                 this.props.dispatch(changeToken(json.data.token));
                 this.setState({melding: null});
+                this.setState({loading: false});
+                this.props.dispatch(changeIsLoggedIn(true));
             } else console.log(route + " failed!");
         })
         .catch(error => {
@@ -77,6 +82,7 @@ class Auth extends React.Component {
             }
 
             this.setState({melding: melding});
+            this.setState({loading: false});
         });
     }
 
@@ -108,12 +114,13 @@ class Auth extends React.Component {
     render(){
         return(
             <div id="auth">
+                <img className="logoImg" src={logo} alt="appLogo"></img>
+                <Alert foutmeldingen={this.state.melding}></Alert>
                 <Switch>
-                    <Route path="/auth/login" render={props => <Login {...props} loginUser={this.loginUser} />} />
-                    <Route path="/auth/register" render={props => <Register {...props} registerUser={this.registerUser} />} />
+                    <Route path="/auth/login" render={props => <Login {...props} loginUser={this.loginUser} loading={this.state.loading}/>} />
+                    <Route path="/auth/register" render={props => <Register {...props} registerUser={this.registerUser} loading={this.state.loading}/>} />
                     <Route path="/auth/logout" render={props => <Logout {...props} logoutUser={this.logoutUser} />} />
                 </Switch>
-                <Alert foutmeldingen={this.state.melding}></Alert>
             </div>
         )
     }

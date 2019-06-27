@@ -2,11 +2,7 @@
 
 #auth {
     background-color: $orange;
-}
-
-#login, #register {
-    padding: 15px;
-
+    height: 100% !important;
 
     .logoImg {
         margin: 0 auto;
@@ -14,6 +10,10 @@
         max-width: 300px;
         display: block;
     }
+}
+
+#login, #register {
+    margin: 0 15px;
 
     form {
         display: block;
@@ -51,10 +51,19 @@
         border-radius: 0.5rem;
         border: none;
         box-shadow: $boxshadow;
+        cursor: pointer;
 
         &:hover {
             background-color: $hoverblue;
-        cursor: pointer;
+        }
+
+        &:focus {
+            outline: 0;
+        }
+
+        &:disabled {
+            cursor: default;
+            background-color: $blue;
         }
     }
 

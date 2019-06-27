@@ -2,9 +2,10 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import "./Auth.scss";
-import logo from "../../img/appLogo.png";
 
-const Login = ({loginUser}) => {
+import Spinner from "../Spinner";
+
+const Login = props => {
 
     let email, password;
     /**
@@ -14,11 +15,11 @@ const Login = ({loginUser}) => {
      **/
     const handleLogin = event => {
         event.preventDefault();
-        loginUser(email.value, password.value);
+        props.loginUser(email.value, password.value);
     };
     return (
         <div id="login">
-            <img className="logoImg" src={logo} alt="appLogo"></img>
+
             <form onSubmit={handleLogin} action="" method="post">
                 {/* input username */}
                 <input
@@ -40,8 +41,8 @@ const Login = ({loginUser}) => {
                         Registreren
                     </Link>
                     {/* submit button */}
-                    <button type="submit">
-                        Login
+                    <button type="submit" disabled={props.loading}>
+                        {props.loading ? <Spinner color={"white"}/> : "Login"}
                     </button>
                 </div>
             </form>
