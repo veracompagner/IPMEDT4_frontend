@@ -1,12 +1,16 @@
+// Import react and react-router components
 import React from "react";
 import { Link } from "react-router-dom";
 
-import "./Auth.scss";
-import logo from "../../img/appLogo.png";
+// Import spinner
+import Spinner from "./Spinner";
 
-const Login = ({loginUser}) => {
+// Login functional component
+const Login = props => {
 
+    // Initiate vars for form
     let email, password;
+
     /**
      * @func handleLogin
      * @param event
@@ -14,11 +18,11 @@ const Login = ({loginUser}) => {
      **/
     const handleLogin = event => {
         event.preventDefault();
-        loginUser(email.value, password.value);
+        props.loginUser(email.value, password.value);
     };
+
     return (
-        <div id="login">
-            <img className="logoImg" src={logo} alt="appLogo"></img>
+        <div>
             <form onSubmit={handleLogin} action="" method="post">
                 {/* input username */}
                 <input
@@ -27,6 +31,7 @@ const Login = ({loginUser}) => {
                     type="text"
                     placeholder="E-mailadres"
                 />
+
                 {/* input password */}
                 <input
                     ref={input => (password = input)}
@@ -34,20 +39,20 @@ const Login = ({loginUser}) => {
                     type="password"
                     placeholder="Wachtwoord"
                 />
+
                 <div className="splitbox">
-                    {/*Register link*/}
+                    {/* Register link */}
                     <Link to="/auth/register">
                         Registreren
                     </Link>
                     {/* submit button */}
-                    <button type="submit">
-                        Login
+                    <button type="submit" disabled={props.loading}>
+                        {props.loading ? <Spinner color={"white"}/> : "Login"}
                     </button>
                 </div>
             </form>
         </div>
     );
-
 }
 
 export default Login;

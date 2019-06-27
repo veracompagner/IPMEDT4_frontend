@@ -1,11 +1,14 @@
+// Import react and react-router components
 import React from "react";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
-import "./Auth.scss";
-import logo from "../../img/appLogo.png";
+// Import spinner
+import Spinner from "./Spinner";
 
-const Register = ({registerUser}) => {
+// Register functional component
+const Register = props => {
 
+    // Initiate vars for form
     let email, password, name, password_confirmation;
 
     /**
@@ -15,12 +18,11 @@ const Register = ({registerUser}) => {
      **/
     const handleRegister = event => {
         event.preventDefault();
-        registerUser(name.value, email.value, password.value, password_confirmation.value);
+        props.registerUser(name.value, email.value, password.value, password_confirmation.value);
     };
 
     return (
-        <div id="register">
-            <img className="logoImg" src={logo} alt="appLogo"></img>
+        <div>
             <form onSubmit={handleRegister} action="" method="post">
                 {/* input username */}
                 <input
@@ -30,14 +32,13 @@ const Register = ({registerUser}) => {
                     placeholder="Gebruikersnaam"
                 />
 
-                {/* input mail */}
+                {/* input email */}
                 <input
                     ref={input => (email = input)}
                     name="email"
                     type="text"
                     placeholder="E-mailadres"
                 />
-
 
                 {/* input password */}
                 <input
@@ -47,6 +48,7 @@ const Register = ({registerUser}) => {
                     placeholder="Wachtwoord"
                 />
 
+                {/* input confirmation */}
                 <input
                     ref={input => (password_confirmation = input)}
                     name="password_confirmation"
@@ -55,13 +57,13 @@ const Register = ({registerUser}) => {
                 />
 
                 <div className="splitbox">
-                    {/*Inlog link*/}
+                    {/* Inlog link */}
                     <Link to="/">
                         Inloggen
                     </Link>
                     {/* submit button */}
-                    <button type="submit">
-                        Registreer
+                    <button type="submit" disabled={props.loading}>
+                        {props.loading ? <Spinner size="22px" color={"white"}/> : "Registreer"}
                     </button>
                 </div>
             </form>

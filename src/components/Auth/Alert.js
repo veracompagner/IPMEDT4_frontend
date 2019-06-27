@@ -1,12 +1,15 @@
+// Import react
 import React from "react";
+
+// Import scss
 import "./Alert.scss";
 
-const Alert = (props) => {
-    return (
-        <div id="alert">
-            <p>{props.foutmeldingen}</p>
-        </div>
-    );
-};
+// Alert functional component
+const Alert = props => (
+    <div id="alert">
+        {/* Display given error message */}
+        <p>{props.foutmeldingen}</p>
+    </div>
+);
 
 export default Alert;

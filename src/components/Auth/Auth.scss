@@ -1,14 +1,12 @@
+// Import scss constants
 @import "../../constants/constants";
 
-#auth {
+.auth {
     background-color: $orange;
-}
+    height: 100% !important;
+    padding: 1em;
 
-#login, #register {
-    padding: 15px;
-
-
-    .logoImg {
+    &-logo {
         margin: 0 auto;
         width: 60%;
         max-width: 300px;
@@ -51,10 +49,19 @@
         border-radius: 0.5rem;
         border: none;
         box-shadow: $boxshadow;
+        cursor: pointer;
 
         &:hover {
             background-color: $hoverblue;
-        cursor: pointer;
+        }
+
+        &:focus {
+            outline: 0;
+        }
+
+        &:disabled {
+            cursor: default;
+            background-color: $blue;
         }
     }
 
@@ -68,6 +75,5 @@
         &:hover {
             color: $hoverblue;
         }
-
     }
 }
