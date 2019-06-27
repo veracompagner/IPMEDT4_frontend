@@ -3,6 +3,7 @@ import React from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+import { changeProducts } from "../../redux/actions"
 
 import { APIURL } from "../../constants/constants";
 
@@ -12,22 +13,12 @@ import "./Acties.scss";
 // Import Card component
 import Card from "../Card";
 
-// Import Modal
-import Modal from "../Modal/Modal";
-
 // Import Images
 import defaultImg from  "../../img/default.png";
 import ModalWrapper from "../Modal/ModalWrapper";
 
 // Define class component
 class Acties extends React.Component {
-
-    constructor() {
-        super();
-        this.state = {
-            products: null
-        }
-    }
 
     componentWillMount = () => {
         this.retrieveProducts();
@@ -48,14 +39,8 @@ class Acties extends React.Component {
 
                         {/* Company image + exchangeable product name + company name + needed amount of points */}
                         {
-                            this.generateCards(this.state.products, openModal)
+                            this.generateCards(this.props.products, openModal)
                         }
-
-                        {/* Modal */}
-                        <Modal
-                            show={this.state.isShowing}
-                            close={this.closeModalHandler}
-                            data={this.state.modalData} />
                     </div>
                 )}
             </ModalWrapper>
@@ -63,16 +48,15 @@ class Acties extends React.Component {
     }
 
     retrieveProducts = () => {
-        if(!localStorage["products"]) {
-            axios
-            .get(APIURL + "/products", {headers: {Authorization: `Bearer ${this.props.token}`}})
+        if(this.props.products !== []) {
+            axios({
+                method: 'GET',
+                url: APIURL + "/products",
+                headers: {Authorization: `Bearer ${this.props.token}`}
+            })
             .then(json => {
                 if (json.data) {
-                    // save products data in local storage
-                    localStorage["products"] = JSON.stringify(json.data);
-                    this.setState({
-                        products: json.data
-                    })
+                    this.props.dispatch(changeProducts(json.data))
                 } else {
                     console.log(json);
                     console.log("Retrieving products failed!");
@@ -82,12 +66,7 @@ class Acties extends React.Component {
                 console.log(error.response);
                 console.log("Er is iets mis gegaan");
             });
-        } else {
-            this.setState({
-                products: JSON.parse(localStorage["products"])
-            })
         }
-
     };
 
     generateCards = (products, openModal) => {
@@ -110,7 +89,8 @@ class Acties extends React.Component {
 const mapStateToProps = state => {
     return {
         user: state.user,
-        token: state.token
+        token: state.token,
+        products: state.products
     }
 }
 
