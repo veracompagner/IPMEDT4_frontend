@@ -2,7 +2,7 @@
 import React from 'react'
 import "./Card.scss";
 
-import defaultImg from "../img/default.png";
+import defaultImg from "../../../img/default.png";
 
 const Card = props => (
     <div className="card" onClick={props.onClick || null}>

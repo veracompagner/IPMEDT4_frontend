@@ -3,7 +3,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 // Import spinner
-import Spinner from "./Spinner";
+import Spinner from "../helper/Spinner/Spinner";
 
 // Register functional component
 const Register = props => {

@@ -3,16 +3,16 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { changeProducts } from "../../redux/actions";
 
-import Card from "../Card"
+import Card from "../helper/Card/Card"
 import BottomBar from './BottomBar'
-import ModalWrapper from "../Modal/ModalWrapper";
+import ModalWrapper from "../helper/Modal/ModalWrapper";
 
 import "./Overzicht.scss"
 
 import logoZonder from "../../img/appLogoZonder.png";
 import { APIURL } from "../../constants/constants";
 import axios from "axios";
-import Spinner from "../Auth/Spinner";
+import Spinner from "../helper/Spinner/Spinner";
 
 class Overzicht extends React.Component {
 

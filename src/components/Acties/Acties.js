@@ -10,9 +10,9 @@ import { APIURL } from "../../constants/constants";
 import "./Acties.scss";
 
 // Import Card component
-import Card from "../Card";
+import Card from "../helper/Card/Card";
 
-import ModalWrapper from "../Modal/ModalWrapper";
+import ModalWrapper from "../helper/Modal/ModalWrapper";
 
 // Define class component
 class Acties extends React.Component {

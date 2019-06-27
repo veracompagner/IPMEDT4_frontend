@@ -4,8 +4,8 @@ import { QRCode } from "react-qr-svg";
 
 import './Modal.scss';
 import axios from "axios";
-import {APIURL} from "../../constants/constants";
-import {changeUser} from "../../redux/actions";
+import {APIURL} from "../../../constants/constants";
+import {changeUser} from "../../../redux/actions";
 import {connect} from "react-redux";
 
 const modal = (props) => {
