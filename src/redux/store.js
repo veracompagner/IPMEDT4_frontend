@@ -1,5 +1,5 @@
 import { combineReducers, createStore } from "redux";
-import { isLoggedIn, user, token, products } from "./reducers";
+import { isLoggedIn, user, token, products, favorite } from "./reducers";
 
 const loadState = () => {
     try {
@@ -28,7 +28,8 @@ export const store = createStore(
         isLoggedIn,
         user,
         token,
-        products
+        products,
+        favorite
     }),
     persistedState
 );
@@ -36,4 +37,3 @@ export const store = createStore(
 store.subscribe(() => {
     saveState(store.getState());
 });
-

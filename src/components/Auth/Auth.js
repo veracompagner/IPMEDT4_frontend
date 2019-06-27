@@ -14,7 +14,7 @@ import { APIURL } from "../../constants/constants";
 import Login from "./Login";
 import Register from "./Register";
 import Logout from "./Logout";
-import Alert from "./Alert";
+import Alert from "../helper/Alert/Alert";
 
 // Import scss
 import "./Auth.scss";
