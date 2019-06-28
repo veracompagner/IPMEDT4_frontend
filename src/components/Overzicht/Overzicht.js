@@ -18,6 +18,7 @@ class Overzicht extends React.Component {
 
     componentWillMount = () => {
         this.retrieveProducts();
+        document.body.style.background = "#FFF8E2";
     }
 
     retrieveProducts = () => {

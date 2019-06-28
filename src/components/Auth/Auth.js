@@ -34,6 +34,10 @@ class Auth extends React.Component {
         };
     }
 
+    componentDidMount(){
+        document.body.style.background = "#FFC61E";
+    }
+
     // Main function for requesting login and register
     // Accepts the route it needs to take and a formData object containing credentials
     authUser = (route, formData) => {
