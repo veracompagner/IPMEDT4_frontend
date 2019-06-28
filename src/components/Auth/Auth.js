@@ -65,8 +65,15 @@ class Auth extends React.Component {
             console.log(error);
             if(error.response) {
                 // Parse errordata
-                var errors = JSON.parse(error.response.data);
-                console.log(errors);
+                console.log(error.response);
+                var errors;
+                // Try to parse the data, if its already an object, return that instead
+                try {
+                    errors = JSON.parse(error.response.data);
+                } catch {
+                    errors = error.response.data;
+                }
+
                 if( errors['email'] ) {
 
                     if( errors['email'].includes("The email must be a valid email address.") ) {
