@@ -44,16 +44,29 @@ const modal = (props) => {
             <div onClick={props.close} className="modal"
                  style={{
                      transform: props.show ? 'translateY(0vh)' : 'translateY(-100vh)',
-                     opacity: props.show ? '1' : '0'
+                     opacity: props.show ? '1' : '0',
                  }}>
                 <div className="modal-wrapper">
-                    <div className="modal-body">
-                        <QRCode value={props.data.product} className="modal-qr" />
+                    <div className="modal-body"
+                    style={{
+                        background: '#003373'
+                    }}>
+                        {console.log(props.data)}
+                        <p className={"bold"}>{props.data.company.name}</p>
+                        <p>{props.data.product}</p>
+                        <div className="modal-footer">
+                            <button className="modal-button modal-button-cancel" onClick={props.close}>Cancel</button>
+                            <button className="modal-button modal-button-confirm" onClick={handleConfirm}>Confirm</button>
+                        </div>
                     </div>
-                    <div className="modal-footer">
-                        <button className="modal-button modal-button-cancel" onClick={props.close}>Cancel</button>
-                        <button className="modal-button modal-button-confirm" onClick={handleConfirm}>Confirm</button>
-                    </div>
+
+                    {/*<div className="modal-body">*/}
+                    {/*    <QRCode value={props.data.product} className="modal-qr" />*/}
+                    {/*</div>*/}
+                    {/*<div className="modal-footer">*/}
+                    {/*    <button className="modal-button modal-button-cancel" onClick={props.close}>Cancel</button>*/}
+                    {/*    <button className="modal-button modal-button-confirm" onClick={handleConfirm}>Confirm</button>*/}
+                    {/*</div>*/}
                 </div>
             </div>
         )
