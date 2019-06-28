@@ -5,13 +5,7 @@
     font-family: sans-serif;
 }
 
-body > #root > div {
-    min-height: 100vh;
-    height: 100vh;
-}
-
-html {
-    width: 100%;
+html, #root, body > #root > div {
     height: 100%;
 }
 
