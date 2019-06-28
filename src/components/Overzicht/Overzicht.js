@@ -54,7 +54,9 @@ class Overzicht extends React.Component {
                             <i className="material-icons icon-left-corner">power_settings_new</i>
                         </Link>
                         <div className="overzicht-punten-root">
-                            <img className="overzicht-punten-img" src={logoZonder} alt=""></img>
+                            <figure className="overzicht-punten-figure">
+                                <img className="overzicht-punten-img" src={logoZonder} alt=""></img>
+                            </figure>
                             <p className="overzicht-punten-tekst">{this.props.user.points}</p>
                         </div>
                         <div className="overzicht-cards">
